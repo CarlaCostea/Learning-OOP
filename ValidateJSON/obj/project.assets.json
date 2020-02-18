@@ -525,11 +525,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\carla\\source\\repos\\ValidateJSON\\ValidateJSON.csproj",
+      "projectUniqueName": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON\\ValidateJSON.csproj",
       "projectName": "ValidateJSON",
-      "projectPath": "C:\\Users\\carla\\source\\repos\\ValidateJSON\\ValidateJSON.csproj",
+      "projectPath": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON\\ValidateJSON.csproj",
       "packagesPath": "C:\\Users\\carla\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\carla\\source\\repos\\ValidateJSON\\obj\\",
+      "outputPath": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\carla\\AppData\\Roaming\\NuGet\\NuGet.Config",

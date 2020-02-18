@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\carla\\source\\repos\\ValidateJSON.tests\\ValidateJSON.tests.csproj": {}
+    "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON.tests\\ValidateJSON.tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\carla\\source\\repos\\ValidateJSON.tests\\ValidateJSON.tests.csproj": {
+    "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON.tests\\ValidateJSON.tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carla\\source\\repos\\ValidateJSON.tests\\ValidateJSON.tests.csproj",
+        "projectUniqueName": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON.tests\\ValidateJSON.tests.csproj",
         "projectName": "ValidateJSON.tests",
-        "projectPath": "C:\\Users\\carla\\source\\repos\\ValidateJSON.tests\\ValidateJSON.tests.csproj",
+        "projectPath": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON.tests\\ValidateJSON.tests.csproj",
         "packagesPath": "C:\\Users\\carla\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carla\\source\\repos\\ValidateJSON.tests\\obj\\",
+        "outputPath": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON.tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\carla\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\carla\\source\\repos\\ValidateJSON\\ValidateJSON.csproj": {
-                "projectPath": "C:\\Users\\carla\\source\\repos\\ValidateJSON\\ValidateJSON.csproj"
+              "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON\\ValidateJSON.csproj": {
+                "projectPath": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON\\ValidateJSON.csproj"
               }
             }
           }
@@ -78,14 +78,14 @@
         }
       }
     },
-    "C:\\Users\\carla\\source\\repos\\ValidateJSON\\ValidateJSON.csproj": {
+    "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON\\ValidateJSON.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carla\\source\\repos\\ValidateJSON\\ValidateJSON.csproj",
+        "projectUniqueName": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON\\ValidateJSON.csproj",
         "projectName": "ValidateJSON",
-        "projectPath": "C:\\Users\\carla\\source\\repos\\ValidateJSON\\ValidateJSON.csproj",
+        "projectPath": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON\\ValidateJSON.csproj",
         "packagesPath": "C:\\Users\\carla\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carla\\source\\repos\\ValidateJSON\\obj\\",
+        "outputPath": "C:\\Users\\carla\\source\\Learning-OOP\\ValidateJSON\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\carla\\AppData\\Roaming\\NuGet\\NuGet.Config",

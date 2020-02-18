@@ -13,7 +13,7 @@ namespace ValidateJSON
 
         public static bool ValidateJsonString(string input)
         {
-            return false;
+            return true;
         }
     }
 }
