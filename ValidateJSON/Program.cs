@@ -18,17 +18,27 @@ namespace ValidateJSON
                 return false;
             }
 
-            return IsWrappedInDoubleQuotes(input);
+            return IsWrappedInDoubleQuotes(input) && ValidateContent(input);
         }
 
-        private static bool IsWrappedInDoubleQuotes(string input)
+        public static bool IsWrappedInDoubleQuotes(string input)
         {
+            if (input == null)
+            {
+                return false;
+            }
+
             if (input.Length <= 1)
             {
                 return false;
             }
 
             return input[0] == '"' && input[input.Length - 1] == '"';
+        }
+
+        private static bool ValidateContent(string input)
+        {
+            return false;
         }
     }
 }

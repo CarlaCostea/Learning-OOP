@@ -9,6 +9,12 @@ namespace ValidateJSON.tests
         public void FirstAndLastCharactersShouldBeQuotationMark()
         {
             string input = "\"\"";
+            Assert.Equal(true, Program.IsWrappedInDoubleQuotes(input));
+        }
+        [Fact]
+        public void WhenInputContainsOnlyLettersWeShouldReturnTrue()
+        {
+            string input = "\"ana\"";
             Assert.Equal(true, Program.ValidateJsonString(input));
         }
     }
