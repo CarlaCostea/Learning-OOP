@@ -38,7 +38,17 @@ namespace ValidateJSON
 
         private static bool ValidateContent(string input)
         {
-            return false;
+            const int secondLast = 2;
+            bool validContent = true;
+            for (int i = 1; i < input.Length - secondLast; i++)
+            {
+                if (!char.IsLetter(input[i]))
+                {
+                    validContent = false;
+                }
+            }
+
+            return validContent;
         }
     }
 }
