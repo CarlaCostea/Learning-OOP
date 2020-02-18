@@ -6,9 +6,9 @@ namespace ValidateJSON.tests
     public class ValidateJson
     {
         [Fact]
-        public void FirstCharacterShouldBeQuotationMark()
+        public void FirstAndLastCharactersShouldBeQuotationMark()
         {
-            string input = "\"";
+            string input = "\"\"";
             Assert.Equal(true, Program.ValidateJsonString(input));
         }
     }

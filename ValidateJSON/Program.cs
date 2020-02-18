@@ -13,7 +13,22 @@ namespace ValidateJSON
 
         public static bool ValidateJsonString(string input)
         {
-            return true;
+            if (input == null)
+            {
+                return false;
+            }
+
+            return IsWrappedInDoubleQuotes(input);
+        }
+
+        private static bool IsWrappedInDoubleQuotes(string input)
+        {
+            if (input.Length <= 1)
+            {
+                return false;
+            }
+
+            return input[0] == '"' && input[input.Length - 1] == '"';
         }
     }
 }
