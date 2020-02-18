@@ -11,6 +11,14 @@ namespace ValidateJSON.tests
             string input = "\"\"";
             Assert.Equal(true, Program.IsWrappedInDoubleQuotes(input));
         }
+
+        [Fact]
+        public void WhenContentIsNullWeShouldReturnTrue()
+        {
+            string input = "\"\"";
+            Assert.Equal(true, Program.ValidateJsonString(input));
+        }
+
         [Fact]
         public void WhenInputContainsOnlyLettersWeShouldReturnTrue()
         {
