@@ -1,0 +1,11 @@
+C:\Users\carla\source\repos\ValidateJSON\bin\Debug\netcoreapp3.1\ValidateJSON.exe
+C:\Users\carla\source\repos\ValidateJSON\obj\Debug\netcoreapp3.1\ValidateJSON.csprojAssemblyReference.cache
+C:\Users\carla\source\repos\ValidateJSON\obj\Debug\netcoreapp3.1\ValidateJSON.AssemblyInfoInputs.cache
+C:\Users\carla\source\repos\ValidateJSON\obj\Debug\netcoreapp3.1\ValidateJSON.AssemblyInfo.cs
+C:\Users\carla\source\repos\ValidateJSON\bin\Debug\netcoreapp3.1\ValidateJSON.deps.json
+C:\Users\carla\source\repos\ValidateJSON\bin\Debug\netcoreapp3.1\ValidateJSON.runtimeconfig.json
+C:\Users\carla\source\repos\ValidateJSON\bin\Debug\netcoreapp3.1\ValidateJSON.runtimeconfig.dev.json
+C:\Users\carla\source\repos\ValidateJSON\bin\Debug\netcoreapp3.1\ValidateJSON.dll
+C:\Users\carla\source\repos\ValidateJSON\bin\Debug\netcoreapp3.1\ValidateJSON.pdb
+C:\Users\carla\source\repos\ValidateJSON\obj\Debug\netcoreapp3.1\ValidateJSON.dll
+C:\Users\carla\source\repos\ValidateJSON\obj\Debug\netcoreapp3.1\ValidateJSON.pdb
