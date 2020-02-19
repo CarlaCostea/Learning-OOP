@@ -39,12 +39,12 @@ namespace ValidateJSON
         private static bool ValidateContent(string input)
         {
             const int maxControlChar = 32;
-            const int secondLast = 2;
+            const int last = 1;
             bool validContent = true;
-            for (int i = 1; i < input.Length - secondLast; i++)
+            for (int i = 1; i < input.Length - last; i++)
             {
                 Console.WriteLine(Convert.ToInt16(input[i]));
-                if (Convert.ToInt16(input[i]) < maxControlChar)
+                if (Convert.ToInt16(input[i]) < maxControlChar || input[i] == '"')
                 {
                     validContent = false;
                 }
