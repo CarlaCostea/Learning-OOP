@@ -45,6 +45,12 @@ namespace ValidateJSON.tests
             Assert.True(Program.ValidateJsonString(input));
         }
         [Fact]
+        public void WhenDoubleQuotesArePrecededByBackslashWeShouldReturnTrue()
+        {
+            string input = "\"\\\"\"";
+            Assert.True(Program.ValidateJsonString(input));
+        }
+        [Fact]
         public void RandomValidTest0()
         {
             string input = "\"Test\"";

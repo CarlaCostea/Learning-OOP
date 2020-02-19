@@ -59,6 +59,7 @@ namespace ValidateJSON
                 if (Convert.ToInt16(input[i]) == backslash)
                 {
                     validContent = ValidateNext(input, ref i);
+                    i++;
                 }
                 else
                 {
@@ -71,7 +72,14 @@ namespace ValidateJSON
 
         private static bool ValidateNext(string input, ref int i)
         {
+            const int backslash = 92;
             char[] controlChar = { 'a', 'b', 't', 'n', 'v', 'f', 'r' };
+            if (Convert.ToInt16(input[i + 1]) == backslash)
+            {
+                i++;
+                return true;
+            }
+
             for (int k = 0; k < controlChar.Length; k++)
             {
                 if (input[i + 1] == controlChar[k])
