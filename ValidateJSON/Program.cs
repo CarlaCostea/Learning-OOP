@@ -74,7 +74,7 @@ namespace ValidateJSON
         {
             const int backslash = 92;
             char[] controlChar = { 'a', 'b', 't', 'n', 'v', 'f', 'r' };
-            if (Convert.ToInt16(input[i + 1]) == backslash)
+            if (Convert.ToInt16(input[i + 1]) == backslash || input[i + 1] == '"' && i + 1 != input.Length - 1)
             {
                 i++;
                 return true;
