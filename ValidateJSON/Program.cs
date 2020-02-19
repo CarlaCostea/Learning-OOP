@@ -60,6 +60,10 @@ namespace ValidateJSON
                 {
                     validContent = ValidateNext(input, ref i);
                 }
+                else
+                {
+                    i++;
+                }
             }
 
             return validContent;
@@ -67,7 +71,18 @@ namespace ValidateJSON
 
         private static bool ValidateNext(string input, ref int i)
         {
-            throw new NotImplementedException();
+            char[] controlChar = { 'a', 'b', 't', 'n', 'v', 'f', 'r' };
+            for (int k = 0; k < controlChar.Length; k++)
+            {
+                if (input[i + 1] == controlChar[k])
+                {
+                    i++;
+                    return true;
+                }
+            }
+
+            i++;
+            return false;
         }
     }
 }

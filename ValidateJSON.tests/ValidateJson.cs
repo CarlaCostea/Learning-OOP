@@ -20,9 +20,9 @@ namespace ValidateJSON.tests
         }
 
         [Fact]
-        public void WhenInputContainsControlCharactersWeShouldReturnFalse()
+        public void WhenInputContainsSolidusShouldReturnFalse()
         {
-            string input = "\"\\b\"";
+            string input = "\"/\"";
             Assert.False(Program.ValidateJsonString(input));
         }
         [Fact]
