@@ -41,17 +41,33 @@ namespace ValidateJSON
             const int maxControlChar = 32;
             const int backslash = 92;
             const int last = 1;
+            const int second = 2;
             bool validContent = true;
-            for (int i = 1; i < input.Length - last; i++)
+            if (Convert.ToInt16(input[1]) < maxControlChar)
             {
-                Console.WriteLine(Convert.ToInt16(input[i]));
-                if (Convert.ToInt16(input[i]) < maxControlChar || input[i] == '"' || Convert.ToInt16(input[i]) == backslash)
+                return false;
+            }
+
+            int i = 1;
+            while (i < input.Length - last)
+            {
+                if (input[i] == '/' || input[i] == '"')
                 {
-                    validContent = Convert.ToInt16(input[i - 1]) == backslash;
+                    return false;
+                }
+
+                if (Convert.ToInt16(input[i]) == backslash)
+                {
+                    validContent = ValidateNext(input, ref i);
                 }
             }
 
             return validContent;
+        }
+
+        private static bool ValidateNext(string input, ref int i)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ValidateJSON.tests
         [Fact]
         public void WhenInputContainsControlCharactersWeShouldReturnFalse()
         {
-            string input = "\"\\u\"";
+            string input = "\"\\b\"";
             Assert.False(Program.ValidateJsonString(input));
         }
         [Fact]
@@ -44,5 +44,43 @@ namespace ValidateJSON.tests
             string input = "\"\\\\\"";
             Assert.True(Program.ValidateJsonString(input));
         }
+        [Fact]
+        public void RandomValidTest0()
+        {
+            string input = "\"Test\"";
+            Assert.True(Program.ValidateJsonString(input));
+        }
+        [Fact]
+        public void RandomInvalidTest0()
+        {
+            string input = "Test\"";
+            Assert.False(Program.ValidateJsonString(input));
+        }
+        [Fact]
+        public void RandomValidTest1()
+        {
+            string input = "\"Test\\u0097\"";
+            Assert.True(Program.ValidateJsonString(input));
+        }
+
+        [Fact]
+        public void RandomValidTest2()
+        {
+            string input = "\"Test\\u0097\\nAnother line\"";
+            Assert.True(Program.ValidateJsonString(input));
+        }
+        [Fact]
+        public void RandomValidTest3()
+        {
+            string input = "\"\\nAnother line\"";
+            Assert.True(Program.ValidateJsonString(input));
+        }
+        [Fact]
+        public void RandomValidTest4()
+        {
+            string input = "\"Backspace\\bAnother line\"";
+            Assert.True(Program.ValidateJsonString(input));
+        }
+
     }
 }
