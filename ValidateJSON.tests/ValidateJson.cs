@@ -25,5 +25,11 @@ namespace ValidateJSON.tests
             string input = "\"ana\"";
             Assert.Equal(true, Program.ValidateJsonString(input));
         }
+        [Fact]
+        public void WhenInputContainsDoubleQuotesWeShouldReturnTrue()
+        {
+            string input = """;
+            Assert.Equal(true, Program.ValidateJsonString(input));
+        }
     }
 }
