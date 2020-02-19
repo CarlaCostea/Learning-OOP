@@ -38,11 +38,13 @@ namespace ValidateJSON
 
         private static bool ValidateContent(string input)
         {
+            const int maxControlChar = 32;
             const int secondLast = 2;
             bool validContent = true;
             for (int i = 1; i < input.Length - secondLast; i++)
             {
-                if (!char.IsLetter(input[i]))
+                Console.WriteLine(Convert.ToInt16(input[i]));
+                if (Convert.ToInt16(input[i]) < maxControlChar)
                 {
                     validContent = false;
                 }
