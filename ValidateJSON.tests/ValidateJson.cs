@@ -41,7 +41,7 @@ namespace ValidateJSON.tests
         [Fact]
         public void WhenBackslashIsPrecededByBackslashWeShouldReturnTrue()
         {
-            string input = "\"\\\"";
+            string input = "\"\\\\\"";
             Assert.True(Program.ValidateJsonString(input));
         }
     }

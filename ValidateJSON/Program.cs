@@ -47,7 +47,7 @@ namespace ValidateJSON
                 Console.WriteLine(Convert.ToInt16(input[i]));
                 if (Convert.ToInt16(input[i]) < maxControlChar || input[i] == '"' || Convert.ToInt16(input[i]) == backslash)
                 {
-                    validContent = false;
+                    validContent = Convert.ToInt16(input[i - 1]) == backslash;
                 }
             }
 
