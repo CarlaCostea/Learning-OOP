@@ -22,7 +22,7 @@ namespace ValidateJSON.tests
         [Fact]
         public void WhenInputContainsControlCharactersWeShouldReturnFalse()
         {
-            string input = "\"^W\"";
+            string input = "\"\\u\"";
             Assert.False(Program.ValidateJsonString(input));
         }
         [Fact]
