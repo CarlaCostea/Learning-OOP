@@ -22,13 +22,20 @@ namespace ValidateJSON.tests
         [Fact]
         public void WhenInputContainsControlCharactersWeShouldReturnFalse()
         {
-            string input = "^W";
+            string input = "\"^W\"";
             Assert.False(Program.ValidateJsonString(input));
         }
         [Fact]
         public void WhenInputContainsDoubleQuotesWeShouldReturnFalse()
         {
-            string input = "\"";
+            string input = "\"\"\"";
+            Assert.False(Program.ValidateJsonString(input));
+        }
+
+        [Fact]
+        public void WhenInputContainsBackslashWeShouldReturnFalse()
+        {
+            string input = "\"\\\"";
             Assert.False(Program.ValidateJsonString(input));
         }
     }
