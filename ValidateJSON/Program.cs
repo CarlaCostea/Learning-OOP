@@ -73,7 +73,7 @@ namespace ValidateJSON
         private static bool ValidateNext(string input, ref int i)
         {
             const int backslash = 92;
-            char[] controlChar = { 'a', 'b', 't', 'n', 'v', 'f', 'r' };
+            const string controlChar = "abtnvfr";
             if (Convert.ToInt16(input[i + 1]) == backslash || input[i + 1] == '"' && i + 1 != input.Length - 1)
             {
                 i++;
@@ -82,7 +82,7 @@ namespace ValidateJSON
 
             for (int k = 0; k < controlChar.Length; k++)
             {
-                if (input[i + 1] == controlChar[k] || input[i + 1] == '/')
+                if (controlChar.IndexOf(input[i + 1]) != -1 || input[i + 1] == '/')
                 {
                     i++;
                     return true;
