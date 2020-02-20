@@ -39,6 +39,12 @@ namespace ValidateJSON.tests
             Assert.False(Program.ValidateJsonString(input));
         }
         [Fact]
+        public void WhenInputContainsControlCharactersWeShouldReturnFalse()
+        {
+            string input = "\"^W\"";
+            Assert.False(Program.ValidateJsonString(input));
+        }
+        [Fact]
         public void WhenBackslashIsPrecededByBackslashWeShouldReturnTrue()
         {
             string input = "\"\\\\\"";
