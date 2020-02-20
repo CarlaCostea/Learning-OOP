@@ -82,7 +82,7 @@ namespace ValidateJSON
 
             for (int k = 0; k < controlChar.Length; k++)
             {
-                if (input[i + 1] == controlChar[k])
+                if (input[i + 1] == controlChar[k] || input[i + 1] == '/')
                 {
                     i++;
                     return true;
