@@ -39,11 +39,19 @@ namespace ValidateJSON.tests
             Assert.False(Program.ValidateJsonString(input));
         }
         [Fact]
-        public void WhenInputContainsUnicodeWeShouldReturnFalse()
+        public void WhenInputContainsValidUnicodeWeShouldReturnTrue()
         {
-            string input = "\"u0020\"";
+            string input = "\"\\u0020\"";
+            Assert.True(Program.ValidateJsonString(input));
+        }
+
+        [Fact]
+        public void WhenInputContainsWrongUnicodeWeShouldReturnFalse()
+        {
+            string input = "\"\\u002\"";
             Assert.False(Program.ValidateJsonString(input));
         }
+
         [Fact]
         public void WhenBackslashIsPrecededByBackslashWeShouldReturnTrue()
         {

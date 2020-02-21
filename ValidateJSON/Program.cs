@@ -100,8 +100,19 @@ namespace ValidateJSON
 
         private static bool ValidUnicode(string input, ref int i)
         {
+            int nextChar = i + 1;
+            const string hexaChars = "ABCDEF0123456789";
             const int uniCode = 4;
-            return false;
+            for (int k = nextChar; k < nextChar + uniCode; k++)
+            {
+                if (hexaChars.IndexOf(input[k]) == -1)
+                {
+                    return false;
+                }
+            }
+
+            i = nextChar + uniCode;
+            return true;
         }
     }
 }
