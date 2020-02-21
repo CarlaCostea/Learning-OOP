@@ -20,12 +20,6 @@ namespace ValidateJSON.tests
         }
 
         [Fact]
-        public void WhenInputContainsSolidusShouldReturnFalse()
-        {
-            string input = "\"/\"";
-            Assert.False(Program.ValidateJsonString(input));
-        }
-        [Fact]
         public void WhenInputContainsDoubleQuotesWeShouldReturnFalse()
         {
             string input = "\"\"\"";

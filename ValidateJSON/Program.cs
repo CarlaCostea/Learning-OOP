@@ -39,31 +39,22 @@ namespace ValidateJSON
         private static bool ValidateContent(string input)
         {
             const int maxControlChar = 32;
-            const int backslash = 92;
             const int last = 1;
             bool validContent = true;
-            if (Convert.ToInt16(input[1]) < maxControlChar)
-            {
-                return false;
-            }
-
             int i = 1;
             while (i < input.Length - last)
             {
-                if (input[i] == '/' || input[i] == '"' || Convert.ToInt16(input[i]) < maxControlChar)
+                if (input[i] == '"' || input[i] < maxControlChar)
                 {
                     return false;
                 }
 
-                if (Convert.ToInt16(input[i]) == backslash)
+                if (input[i] == '\\')
                 {
                     validContent = ValidateNext(input, ref i);
-                    i++;
                 }
-                else
-                {
-                    i++;
-                }
+
+                i++;
             }
 
             return validContent;
@@ -71,21 +62,14 @@ namespace ValidateJSON
 
         private static bool ValidateNext(string input, ref int i)
         {
-            const int backslash = 92;
             int nextChar = i + 1;
             const int uniCode = 4;
-            const string controlChar = "abtnvfr";
-            if (Convert.ToInt16(input[nextChar]) == backslash || input[nextChar] == '"' && nextChar != input.Length - 1)
+            const string controlChar = "abtnvfr\\\"/";
+            if (controlChar.Contains(input[nextChar]) && nextChar != input.Length - 1)
             {
                 i++;
                 return true;
             }
-
-            if (controlChar.IndexOf(input[nextChar]) != -1 || input[nextChar] == '/')
-                {
-                    i++;
-                    return true;
-                }
 
             if (input[nextChar] == 'u' && input.Length > nextChar + uniCode)
             {
@@ -100,11 +84,11 @@ namespace ValidateJSON
         private static bool ValidUnicode(string input, ref int i)
         {
             int nextChar = i + 1;
-            const string hexaChars = "ABCDEF0123456789";
+            const string hexaChars = "abcdefABCDEF0123456789";
             const int uniCode = 4;
             for (int k = nextChar; k < nextChar + uniCode; k++)
             {
-                if (hexaChars.IndexOf(input[k]) == -1)
+                if (!hexaChars.Contains(input[k]))
                 {
                     return false;
                 }
