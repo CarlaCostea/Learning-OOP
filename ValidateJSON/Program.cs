@@ -41,7 +41,6 @@ namespace ValidateJSON
             const int maxControlChar = 32;
             const int backslash = 92;
             const int last = 1;
-            const int second = 2;
             bool validContent = true;
             if (Convert.ToInt16(input[1]) < maxControlChar)
             {
