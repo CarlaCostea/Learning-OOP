@@ -25,19 +25,25 @@ namespace ValidateJSONNumberTests
             Assert.True(ValidateJSONNumber.ValidateInput(input));
         }
         [Fact]
-        public void NegativeNumberShouldReturnTrue2()
+        public void CorrectFloatNumberShouldReturnTrue3()
+        {
+            string input = "12.12";
+            Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
+        [Fact]
+        public void NegativeNumberShouldReturnTrue()
         {
             string input = "12.123E-2";
             Assert.True(ValidateJSONNumber.ValidateInput(input));
         }
         [Fact]
-        public void SubunitarShouldReturnTrue2()
+        public void SubunitarShouldReturnTrue()
         {
             string input = "0.1312";
             Assert.True(ValidateJSONNumber.ValidateInput(input));
         }
         [Fact]
-        public void ZeroShouldReturnTrue2()
+        public void ZeroShouldReturnTrue()
         {
             string input = "0";
             Assert.True(ValidateJSONNumber.ValidateInput(input));
