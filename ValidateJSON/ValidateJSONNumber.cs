@@ -8,18 +8,12 @@ namespace ValidateJSON
         {
             string input = Console.ReadLine();
             Console.WriteLine(ValidateInput(input));
-            float converted;
-            if (!float.TryParse(input, out converted))
-            {
-                return;
-            }
-
-            Console.WriteLine(true);
         }
 
         public static bool ValidateInput(string input)
         {
-            return false;
+            float converted;
+            return float.TryParse(input, out converted);
         }
     }
 }
