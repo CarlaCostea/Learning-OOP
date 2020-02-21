@@ -12,7 +12,17 @@ namespace ValidateJSON
 
         public static bool ValidateInput(string input)
         {
+            if (input == null)
+            {
+                return false;
+            }
+
             float converted;
+            if (input.Length > 1 && input[0] == '0' && input[1] != '.')
+            {
+                return false;
+            }
+
             return float.TryParse(input, out converted);
         }
     }
