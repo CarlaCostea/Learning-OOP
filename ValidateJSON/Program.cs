@@ -51,7 +51,7 @@ namespace ValidateJSON
             int i = 1;
             while (i < input.Length - last)
             {
-                if (input[i] == '/' || input[i] == '"')
+                if (input[i] == '/' || input[i] == '"' || Convert.ToInt16(input[i]) < maxControlChar)
                 {
                     return false;
                 }
@@ -73,23 +73,34 @@ namespace ValidateJSON
         private static bool ValidateNext(string input, ref int i)
         {
             const int backslash = 92;
+            int nextChar = i + 1;
+            const int uniCode = 4;
             const string controlChar = "abtnvfr";
-            if (Convert.ToInt16(input[i + 1]) == backslash || input[i + 1] == '"' && i + 1 != input.Length - 1)
+            if (Convert.ToInt16(input[nextChar]) == backslash || input[nextChar] == '"' && nextChar != input.Length - 1)
             {
                 i++;
                 return true;
             }
 
-            for (int k = 0; k < controlChar.Length; k++)
-            {
-                if (controlChar.IndexOf(input[i + 1]) != -1 || input[i + 1] == '/')
+            if (controlChar.IndexOf(input[nextChar]) != -1 || input[nextChar] == '/')
                 {
                     i++;
                     return true;
                 }
+
+            if (input[nextChar] == 'u' && input.Length > nextChar + uniCode)
+            {
+                i++;
+                return ValidUnicode(input, ref i);
             }
 
             i++;
+            return false;
+        }
+
+        private static bool ValidUnicode(string input, ref int i)
+        {
+            const int uniCode = 4;
             return false;
         }
     }

@@ -39,9 +39,9 @@ namespace ValidateJSON.tests
             Assert.False(Program.ValidateJsonString(input));
         }
         [Fact]
-        public void WhenInputContainsControlCharactersWeShouldReturnFalse()
+        public void WhenInputContainsUnicodeWeShouldReturnFalse()
         {
-            string input = "\"^W\"";
+            string input = "\"u0020\"";
             Assert.False(Program.ValidateJsonString(input));
         }
         [Fact]
