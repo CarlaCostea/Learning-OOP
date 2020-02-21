@@ -2,7 +2,7 @@
 
 namespace ValidateJSON
 {
-    public class Program
+    public class ValidateString
     {
         public static void Main()
         {
