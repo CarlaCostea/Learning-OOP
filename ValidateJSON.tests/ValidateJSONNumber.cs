@@ -30,6 +30,13 @@ namespace ValidateJSONNumberTests
             string input = "12.12";
             Assert.True(ValidateJSONNumber.ValidateInput(input));
         }
+
+        [Fact]
+        public void CorrectFloatNumberShouldReturnTrue4()
+        {
+            string input = "-12.12";
+            Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
         //[Fact]
         //public void NegativeNumberShouldReturnTrue()
         //{

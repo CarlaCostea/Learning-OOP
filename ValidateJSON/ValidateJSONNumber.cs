@@ -68,7 +68,31 @@ namespace ValidateJSON
 
         private static bool VerifyContentAfterDot(string input, ref int currentPosition)
         {
-            throw new NotImplementedException();
+            bool isDigit = true;
+            if (input == null)
+            {
+                return false;
+            }
+
+            if (input.Length <= currentPosition)
+            {
+                return false;
+            }
+
+            for (int i = currentPosition + 1; i < input.Length; i++)
+            {
+                if (input[i] == 'e' || input[i] == 'E')
+                {
+                    return VerifyExponential(input, ref i);
+                }
+
+                if (!char.IsDigit(input[i]))
+                {
+                    isDigit = false;
+                }
+            }
+
+            return isDigit;
         }
 
         private static bool VerifyContentAfterMinus(string input)
