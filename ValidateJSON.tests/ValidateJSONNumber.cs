@@ -48,11 +48,17 @@ namespace ValidateJSONNumberTests
             string input = "0";
             Assert.True(ValidateJSONNumber.ValidateInput(input));
         }
-        //[Fact]
-        //public void NumberPreceededByZeroShouldReturnFalse()
-        //{
-        //    string input = "01";
-        //    Assert.False(ValidateJSONNumber.ValidateInput(input));
-        //}
+        [Fact]
+        public void NumberPreceededByZeroShouldReturnFalse()
+        {
+            string input = "01";
+            Assert.False(ValidateJSONNumber.ValidateInput(input));
+        }
+        [Fact]
+        public void OneDigitShouldReturnTrue()
+        {
+            string input = "1";
+            Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
     }
 }

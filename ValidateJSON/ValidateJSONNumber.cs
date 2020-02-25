@@ -17,7 +17,7 @@ namespace ValidateJSON
                 return false;
             }
 
-            return false;
+            return input.Length == 1 && input[0] == '0';
         }
     }
 }
