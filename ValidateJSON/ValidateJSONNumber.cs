@@ -17,7 +17,40 @@ namespace ValidateJSON
                 return false;
             }
 
-            return input.Length == 1 && input[0] == '0';
+            switch (input[0])
+            {
+                case '-':
+                    return VerifyContentAfterMinus(input);
+                case '0':
+                    return VerifyContentAfterZero(input);
+                default:
+                    return VerifyDigitsNoZero(input);
+            }
+        }
+
+        private static bool VerifyDigitsNoZero(string input)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static bool VerifyContentAfterZero(string input)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static bool VerifyContentAfterMinus(string input)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static bool VerifyContent(string input)
+        {
+            if (input == null)
+            {
+                return false;
+            }
+
+            return false;
         }
     }
 }

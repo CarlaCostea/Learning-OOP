@@ -60,5 +60,11 @@ namespace ValidateJSONNumberTests
             string input = "1";
             Assert.True(ValidateJSONNumber.ValidateInput(input));
         }
+        [Fact]
+        public void NegativeDigitShouldReturnTrue()
+        {
+            string input = "-1";
+            Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
     }
 }
