@@ -35,6 +35,27 @@ namespace ValidateJSON
 
         private static bool VerifyContentAfterZero(string input)
         {
+            if (input == null)
+            {
+                return false;
+            }
+
+            if (input.Length == 1)
+            {
+                return true;
+            }
+
+            if (input[1] != '.')
+            {
+                return false;
+            }
+
+            int currentPosition = 2;
+            return VerifyContentAfterDot(input, ref currentPosition);
+        }
+
+        private static bool VerifyContentAfterDot(string input, ref int currentPosition)
+        {
             throw new NotImplementedException();
         }
 
