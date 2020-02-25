@@ -17,24 +17,37 @@ namespace ValidateJSON
                 return false;
             }
 
+            int currentPosition = 1;
             switch (input[0])
             {
                 case '-':
                     return VerifyContentAfterMinus(input);
                 case '0':
-                    return VerifyContentAfterZero(input);
+                    return VerifyContentAfterZero(input, ref currentPosition);
                 default:
                     return VerifyDigitsNoZero(input);
             }
         }
 
         private static bool VerifyDigitsNoZero(string input)
-        {
-            throw new NotImplementedException();
+            {
+            if (input == null)
+            {
+                return false;
+            }
+
+            if (!char.IsDigit(input[0]) || input[0] == 0)
+            {
+                return false;
+            }
+
+            int currentPosition = 1;
+            return VerifyContent(input, ref currentPosition);
         }
 
-        private static bool VerifyContentAfterZero(string input)
+        private static bool VerifyContentAfterZero(string input, ref int currentPosition)
         {
+            currentPosition++;
             if (input == null)
             {
                 return false;
@@ -45,12 +58,11 @@ namespace ValidateJSON
                 return true;
             }
 
-            if (input[1] != '.')
+            if (input[currentPosition] != '.')
             {
                 return false;
             }
 
-            int currentPosition = 2;
             return VerifyContentAfterDot(input, ref currentPosition);
         }
 
@@ -61,10 +73,21 @@ namespace ValidateJSON
 
         private static bool VerifyContentAfterMinus(string input)
         {
-            throw new NotImplementedException();
+            if (input == null)
+            {
+                return false;
+            }
+
+            int currentPosition = 1;
+            if (input[1] == '0')
+            {
+                return VerifyContentAfterZero(input, ref currentPosition);
+            }
+
+            return VerifyContent(input, ref currentPosition);
         }
 
-        private static bool VerifyContent(string input)
+        private static bool VerifyContent(string input, ref int currentPosition)
         {
             if (input == null)
             {
