@@ -17,7 +17,7 @@ namespace ValidateJSON
                 return false;
             }
 
-            int currentPosition = 1;
+            int currentPosition = 0;
             switch (input[0])
             {
                 case '-':
