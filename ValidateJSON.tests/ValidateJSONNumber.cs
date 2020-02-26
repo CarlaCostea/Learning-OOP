@@ -97,5 +97,11 @@ namespace ValidateJSONNumberTests
             string input = "12.123E+";
             Assert.False(ValidateJSONNumber.ValidateInput(input));
         }
+        [Fact]
+        public void InvalidExponentialFormatShouldReturnFalse2()
+        {
+            string input = "12.123E+.";
+            Assert.False(ValidateJSONNumber.ValidateInput(input));
+        }
     }
 }
