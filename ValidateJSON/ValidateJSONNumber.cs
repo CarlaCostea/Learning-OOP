@@ -147,11 +147,42 @@ namespace ValidateJSON
                 return false;
             }
 
+            if (input.Length <= currentPosition + 1)
+            {
+                return false;
+            }
+
+            currentPosition++;
+            if (input[currentPosition] == '+' || input[currentPosition] == '-' && input.Length > currentPosition)
+            {
+                currentPosition++;
+                return AllDigits(input, ref currentPosition);
+            }
+
+            return AllDigits(input, ref currentPosition);
+        }
+
+        private static bool AllDigits(string input, ref int currentPosition)
+        {
+            if (input == null)
+            {
+                return false;
+            }
+
             if (input.Length <= currentPosition)
             {
                 return false;
             }
 
+            for (int i = currentPosition; i < input.Length; i++)
+            {
+                if (!char.IsDigit(input[currentPosition]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

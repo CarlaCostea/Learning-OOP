@@ -6,18 +6,6 @@ namespace ValidateJSONNumberTests
 {
     public class ValidateJSONNumberTests
     {
-        //[Fact]
-        //public void CorrectFloatNumberShouldReturnTrue1()
-        //{
-        //    string input = "12.123E+3";
-        //    Assert.True(ValidateJSONNumber.ValidateInput(input));
-        //}
-        //[Fact]
-        //public void CorrectFloatNumberShouldReturnTrue2()
-        //{
-        //    string input = "12.123E-2";
-        //    Assert.True(ValidateJSONNumber.ValidateInput(input));
-        //}
         [Fact]
         public void CorrectFloatNumberShouldReturnTrue3()
         {
@@ -31,12 +19,6 @@ namespace ValidateJSONNumberTests
             string input = "-12.12";
             Assert.True(ValidateJSONNumber.ValidateInput(input));
         }
-        //[Fact]
-        //public void NegativeNumberShouldReturnTrue()
-        //{
-        //    string input = "12.123E-2";
-        //    Assert.True(ValidateJSONNumber.ValidateInput(input));
-        //}
         [Fact]
         public void SubunitarShouldReturnTrue()
         {
@@ -90,6 +72,30 @@ namespace ValidateJSONNumberTests
         {
             string input = "12.123e3";
             Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
+        [Fact]
+        public void CorrectExponentialFormatShouldReturnTrue1()
+        {
+            string input = "12.123E+3";
+            Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
+        [Fact]
+        public void CorrectExponentialFormatShouldReturnTrue2()
+        {
+            string input = "12.123E-2";
+            Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
+        [Fact]
+        public void InvalidExponentialFormatShouldReturnFalse()
+        {
+            string input = "12.123E";
+            Assert.False(ValidateJSONNumber.ValidateInput(input));
+        }
+        [Fact]
+        public void InvalidExponentialFormatShouldReturnFalse1()
+        {
+            string input = "12.123E+";
+            Assert.False(ValidateJSONNumber.ValidateInput(input));
         }
     }
 }
