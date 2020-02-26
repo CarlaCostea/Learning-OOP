@@ -68,7 +68,6 @@ namespace ValidateJSON
 
         private static bool VerifyContentAfterDot(string input, ref int currentPosition)
         {
-            bool isDigit = true;
             if (input == null)
             {
                 return false;
@@ -79,20 +78,16 @@ namespace ValidateJSON
                 return false;
             }
 
-            for (int i = currentPosition + 1; i < input.Length; i++)
+            currentPosition++;
+            for (int i = currentPosition; i < input.Length; i++)
             {
                 if (input[i] == 'e' || input[i] == 'E')
                 {
                     return VerifyExponential(input, ref i);
                 }
-
-                if (!char.IsDigit(input[i]))
-                {
-                    isDigit = false;
-                }
             }
 
-            return isDigit;
+            return AllDigits(input, ref currentPosition);
         }
 
         private static bool VerifyContentAfterMinus(string input)
@@ -113,7 +108,6 @@ namespace ValidateJSON
 
         private static bool VerifyContent(string input, ref int currentPosition)
         {
-            bool digit = true;
             if (input == null)
             {
                 return false;
@@ -130,14 +124,14 @@ namespace ValidateJSON
                 {
                     return VerifyExponential(input, ref i);
                 }
-
-                if (!char.IsDigit(input[i]))
-                {
-                    digit = false;
-                }
             }
 
-            return digit;
+            if (input.Length == currentPosition)
+            {
+                return true;
+            }
+
+            return AllDigits(input, ref currentPosition);
         }
 
         private static bool VerifyExponential(string input, ref int currentPosition)
