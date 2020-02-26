@@ -7,12 +7,6 @@ namespace ValidateJSONNumberTests
     public class ValidateJSONNumberTests
     {
         //[Fact]
-        //public void CorrectFloatNumberShouldReturnTrue()
-        //{
-        //    string input = "12.123e3";
-        //    Assert.True(ValidateJSONNumber.ValidateInput(input));
-        //}
-        //[Fact]
         //public void CorrectFloatNumberShouldReturnTrue1()
         //{
         //    string input = "12.123E+3";
@@ -43,12 +37,18 @@ namespace ValidateJSONNumberTests
         //    string input = "12.123E-2";
         //    Assert.True(ValidateJSONNumber.ValidateInput(input));
         //}
-        //[Fact]
-        //public void SubunitarShouldReturnTrue()
-        //{
-        //    string input = "0.1312";
-        //    Assert.True(ValidateJSONNumber.ValidateInput(input));
-        //}
+        [Fact]
+        public void SubunitarShouldReturnTrue()
+        {
+            string input = "0.1312";
+            Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
+        [Fact]
+        public void NegativeSubunitarShouldReturnTrue()
+        {
+            string input = "-0.1312";
+            Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
         [Fact]
         public void ZeroShouldReturnTrue()
         {
@@ -83,6 +83,12 @@ namespace ValidateJSONNumberTests
         public void NegativeDigitShouldReturnTrue()
         {
             string input = "-1";
+            Assert.True(ValidateJSONNumber.ValidateInput(input));
+        }
+        [Fact]
+        public void ExponentialShouldReturnTrue()
+        {
+            string input = "12.123e3";
             Assert.True(ValidateJSONNumber.ValidateInput(input));
         }
     }

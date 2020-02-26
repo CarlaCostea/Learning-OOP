@@ -142,7 +142,16 @@ namespace ValidateJSON
 
         private static bool VerifyExponential(string input, ref int currentPosition)
         {
-            throw new NotImplementedException();
+            if (input == null)
+            {
+                return false;
+            }
+
+            if (input.Length <= currentPosition)
+            {
+                return false;
+            }
+
         }
     }
 }
