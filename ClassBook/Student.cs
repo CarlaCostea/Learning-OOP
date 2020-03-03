@@ -52,7 +52,7 @@ namespace ClassBook
             return false;
         }
 
-        public double GeneralGrade(Grade[] grades)
+        private double GeneralGrade(Grade[] grades)
         {
             double sumOfGrades = 0;
             for(int i = 0; i < index; i++)
