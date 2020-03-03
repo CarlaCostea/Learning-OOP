@@ -34,7 +34,7 @@ namespace ClassBook
             index++;
         }
 
-        public Grade[] GetGrades()
+        private Grade[] GetGrades()
         {
             return grades;
         }
@@ -61,6 +61,11 @@ namespace ClassBook
             }
 
             return sumOfGrades/index;
+        }
+
+        public double GetGeneralGrade()
+        {
+            return GeneralGrade(GetGrades());
         }
     }
 }

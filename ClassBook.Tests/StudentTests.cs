@@ -23,7 +23,7 @@ namespace ClassBook.Tests
             student.AddGradeInGrades(new Grade(Subject.Mathematics, 8.0));
             student.AddGradeInGrades(new Grade(Subject.Mathematics, 10.0));
 
-            Assert.Equal(9.0, student.GeneralGrade(student.GetGrades()));
+            Assert.Equal(9.0, student.GetGeneralGrade());
         }
 
 
