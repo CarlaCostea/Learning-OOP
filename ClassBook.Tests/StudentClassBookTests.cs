@@ -43,7 +43,7 @@ namespace ClassBook.Tests
             student3.AddGradeInGrades(new Grade(Subject.Mathematics, 10.0));
             catalog.AddStudent(student3);
 
-            Assert.Equal(1, catalog.ReturnPozitionOfStudent("Maria"));
+            Assert.Equal(0, catalog.ReturnPozitionOfStudent("Paul"));
         }
     }
 }
