@@ -19,7 +19,25 @@ namespace ClassBook.Tests
         }
 
         [Fact]
-        public void ReturnPozitionOfStudentInSortedList()
+        public void ReturnPozitionOfStudentInSortedList2Students()
+        {
+            Student student = new Student("Maria");
+            StudentsClassBook catalog = new StudentsClassBook();
+            student.AddGradeInGrades(new Grade(Subject.English, 9.0));
+  
+            catalog.AddStudent(student);
+
+            Student student2 = new Student("Ana");
+            student2.AddGradeInGrades(new Grade(Subject.English, 7.0));
+
+            catalog.AddStudent(student2);
+
+
+            Assert.Equal(1, catalog.ReturnPozitionOfStudent("Ana"));
+        }
+
+        [Fact]
+        public void ReturnPozitionOfStudentInSortedList3Students()
         {
             Student student = new Student("Maria");
             StudentsClassBook catalog = new StudentsClassBook();
@@ -43,7 +61,7 @@ namespace ClassBook.Tests
             student3.AddGradeInGrades(new Grade(Subject.Mathematics, 10.0));
             catalog.AddStudent(student3);
 
-            Assert.Equal(0, catalog.ReturnPozitionOfStudent("Paul"));
+            Assert.Equal(2, catalog.ReturnPozitionOfStudent("Ana"));
         }
     }
 }

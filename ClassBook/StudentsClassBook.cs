@@ -50,7 +50,7 @@ namespace ClassBook
 
             for (int j = start; j <= end - 1; j++)
             {
-                if (students[j].GetGeneralGrade() < p)
+                if (students[j].GetGeneralGrade() > p)
                 {
                     i++;
                     temp = students[i];
@@ -68,7 +68,7 @@ namespace ClassBook
         public int ReturnPozitionOfStudent(string name)
         {
             QuickSort(students, 0, index - 1);
-            for ( int i = 0; i < index - 1; i++)
+            for ( int i = 0; i < index; i++)
             {
                 if(students[i].GetName() == name)
                 {
