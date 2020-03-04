@@ -45,12 +45,12 @@ namespace ClassBook
         private int Partition(Student[] students, int start, int end)
         {
             Student temp;
-            double p = students[end].GetGeneralGrade();
+            double p = students[end].GeneralGrade();
             int i = start - 1;
 
             for (int j = start; j <= end - 1; j++)
             {
-                if (students[j].GetGeneralGrade() > p)
+                if (students[j].GeneralGrade() > p)
                 {
                     i++;
                     temp = students[i];
@@ -72,11 +72,22 @@ namespace ClassBook
             {
                 if(students[i].GetName() == name)
                 {
-                    return i;
+                    return i+1;
                 }
             }
 
             return 0;
+        }
+
+        public string ReturnStudentFromPosition(int position)
+        {
+            if (position > index  || position < 1)
+            {
+                return "Invalid position";
+            }
+
+            QuickSort(students, 0, index - 1);
+            return students[position - 1].GetName();
         }
 
     }

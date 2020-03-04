@@ -7,7 +7,7 @@ namespace ClassBook
     public class Grade
     {
         private double grade;
-        private Subject subject;
+        public Subject subject;
 
         public Grade(Subject subject, double grade)
         {
@@ -15,9 +15,9 @@ namespace ClassBook
             this.subject = subject;
         }
 
-        public double GetGrade()
+        internal double AddToSum(double sumOfGrades)
         {
-            return grade;
+            return sumOfGrades + grade;
         }
     }
 }

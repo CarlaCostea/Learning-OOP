@@ -5,13 +5,16 @@ namespace ClassBook.Tests
 {
     public class StudentTests
     {
+
         [Fact]
-        public void GradeInListOfGrades()
+        public void GetGeneralGradeForOneSubject()
         {
             Student student = new Student("ANA");
-            student.AddGradeInGrades(new Grade(Subject.English, 9.0));
 
-            Assert.True(student.VerifyGradetInList(9.0));       
+            student.AddGradeInGrades(new Grade(Subject.Mathematics, 8.0));
+            student.AddGradeInGrades(new Grade(Subject.Mathematics, 10.0));
+
+            Assert.Equal(9.0, student.GetGeneralGrades(Subject.Mathematics));
         }
 
         [Fact]
@@ -22,8 +25,14 @@ namespace ClassBook.Tests
             student.AddGradeInGrades(new Grade(Subject.English, 9.0));
             student.AddGradeInGrades(new Grade(Subject.Mathematics, 8.0));
             student.AddGradeInGrades(new Grade(Subject.Mathematics, 10.0));
+            student.AddGradeInGrades(new Grade(Subject.History, 8.0));
+            student.AddGradeInGrades(new Grade(Subject.History, 10.0));
+            student.AddGradeInGrades(new Grade(Subject.Romanian, 8.0));
+            student.AddGradeInGrades(new Grade(Subject.Romanian, 10.0));
+            student.AddGradeInGrades(new Grade(Subject.Physics, 8.0));
+            student.AddGradeInGrades(new Grade(Subject.Physics, 10.0));
 
-            Assert.Equal(9.0, student.GetGeneralGrade());
+            Assert.Equal(9.0, student.GeneralGrade());
         }
 
 

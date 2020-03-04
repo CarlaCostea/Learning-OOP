@@ -34,38 +34,28 @@ namespace ClassBook
             index++;
         }
 
-        private Grade[] GetGrades()
+        public double GetGeneralGrades(Subject subject)
         {
-            return grades;
-        }
-
-        public bool VerifyGradetInList(double grade)
-        {
+            double sumOfGrades = 0;
+            int indexPerSubject = 0;
             for (int i = 0; i < index; i++)
             {
-                if (grades[i].GetGrade() == grade)
+                if (grades[i].subject == subject)
                 {
-                    return true;
+                    sumOfGrades = grades[i].AddToSum(sumOfGrades);
+                    indexPerSubject++;
                 }
             }
 
-            return false;
+            return sumOfGrades / indexPerSubject;
         }
 
-        private double GeneralGrade(Grade[] grades)
+        public double GeneralGrade()
         {
-            double sumOfGrades = 0;
-            for(int i = 0; i < index; i++)
-            {
-                sumOfGrades += grades[i].GetGrade();
-            }
-
-            return sumOfGrades/index;
+            const int numberOfSubjects = 5;
+            double sumOfGeneral = GetGeneralGrades(Subject.English) + GetGeneralGrades(Subject.History) + GetGeneralGrades(Subject.Mathematics) + GetGeneralGrades(Subject.Physics) + GetGeneralGrades(Subject.Mathematics);
+            return sumOfGeneral/numberOfSubjects;
         }
 
-        public double GetGeneralGrade()
-        {
-            return GeneralGrade(GetGrades());
-        }
     }
 }
