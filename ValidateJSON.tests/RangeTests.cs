@@ -20,5 +20,19 @@ namespace ValidateJSON.tests
             var digit = new Range('a', 'f');
             Assert.False(digit.Match(""));
         }
+
+        [Fact]
+        public void IfFirstLetterIsInStringWeShouldReturnTrue()
+        {
+            var digit = new Range('a', 'f');
+            Assert.True(digit.Match("btg"));
+        }
+
+        [Fact]
+        public void IfFirstLetterIsNotInStringWeShouldReturnTrue()
+        {
+            var digit = new Range('a', 'f');
+            Assert.False(digit.Match("wtg"));
+        }
     }
 }
