@@ -11,7 +11,14 @@ namespace ValidateJSON.tests
         public void IfStringIsNullWeShouldReturnFalse()
         {
             var digit = new Range('a', 'f');
-            Assert.False(digit.Match());
+            Assert.False(digit.Match(null));
+        }
+
+        [Fact]
+        public void IfStringIsEmptyWeShouldReturnFalse()
+        {
+            var digit = new Range('a', 'f');
+            Assert.False(digit.Match(""));
         }
     }
 }
