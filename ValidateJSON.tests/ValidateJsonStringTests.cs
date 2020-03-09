@@ -3,7 +3,7 @@ using Xunit;
 
 namespace ValidateJSON.tests
 {
-    public class ValidateJson
+    public class ValidateJsonStringTests
     {
         [Fact]
         public void FirstAndLastCharactersShouldBeQuotationMark()
