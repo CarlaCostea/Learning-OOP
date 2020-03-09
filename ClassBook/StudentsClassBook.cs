@@ -6,7 +6,7 @@ namespace ClassBook
 {
     public class StudentsClassBook
     {
-        readonly Student[] students = new Student[10];
+        private readonly Student[] students = new Student[10];
         private int index = 0;
 
         public void AddStudent(Student student)

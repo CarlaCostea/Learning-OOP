@@ -32,11 +32,16 @@ namespace ClassBook
         public double GetGeneralGrades(Subject subject)
         {
             double sumOfGrades = 0;
+            double actualSumOfGrades = 0;
             int indexPerSubject = 0;
             for (int i = 0; i < index; i++)
             {
+                actualSumOfGrades = sumOfGrades;
                 sumOfGrades = grades[i].AddToSum(subject, sumOfGrades);
-                indexPerSubject++;
+                if (sumOfGrades != actualSumOfGrades)
+                    {
+                    indexPerSubject++;
+                    }
             }
 
             return sumOfGrades / indexPerSubject;

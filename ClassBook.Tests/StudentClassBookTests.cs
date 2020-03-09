@@ -143,7 +143,7 @@ namespace ClassBook.Tests
             catalog.AddStudent(student2);
 
 
-            Assert.Equal("Ana", catalog.StudentAtPosition(2));
+            Assert.Equal(student2, catalog.StudentAtPosition(2));
         }
     }
 }
