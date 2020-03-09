@@ -35,7 +35,7 @@ namespace ClassBook.Tests
             catalog.AddStudent(student2);
 
 
-            Assert.Equal(2, catalog.ReturnPozitionOfStudent("Ana"));
+            Assert.Equal(2, catalog.StudentPosition("Ana"));
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace ClassBook.Tests
             catalog.AddStudent(student2);
 
 
-            Assert.Equal(0, catalog.ReturnPozitionOfStudent("Paul"));
+            Assert.Equal(0, catalog.StudentPosition("Paul"));
         }
 
         [Fact]
@@ -111,7 +111,7 @@ namespace ClassBook.Tests
             student3.AddGradeInGrades(new Grade(Subject.Physics, 10.0));
             catalog.AddStudent(student3);
 
-            Assert.Equal(3, catalog.ReturnPozitionOfStudent("Ana"));
+            Assert.Equal(3, catalog.StudentPosition("Ana"));
         }
         [Fact]
         public void ReturnStudentOfPozitionInSortedList2Students()
@@ -143,7 +143,7 @@ namespace ClassBook.Tests
             catalog.AddStudent(student2);
 
 
-            Assert.Equal("Ana", catalog.ReturnStudentFromPosition(2));
+            Assert.Equal("Ana", catalog.StudentAtPosition(2));
         }
     }
 }

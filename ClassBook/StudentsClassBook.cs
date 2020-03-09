@@ -6,26 +6,13 @@ namespace ClassBook
 {
     public class StudentsClassBook
     {
-        private Student[] students = new Student[10];
+        readonly Student[] students = new Student[10];
         private int index = 0;
 
         public void AddStudent(Student student)
         {
             students.SetValue(student, index);
             index++;
-        }
-
-        public bool VerifyStudentInList(string name)
-        {
-            for(int i = 0; i < students.Length; i++)
-            {
-                if (students[i].GetName() == name)
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         private void QuickSort(Student[] students, int start, int end)
@@ -65,12 +52,12 @@ namespace ClassBook
             return i + 1;
         }
 
-        public int ReturnPozitionOfStudent(string name)
+        public int StudentPosition(string name)
         {
             QuickSort(students, 0, index - 1);
             for ( int i = 0; i < index; i++)
             {
-                if(students[i].GetName() == name)
+                if(students[i].HasName(name))
                 {
                     return i+1;
                 }
@@ -79,15 +66,15 @@ namespace ClassBook
             return 0;
         }
 
-        public string ReturnStudentFromPosition(int position)
+        public Student StudentAtPosition(int position)
         {
             if (position > index  || position < 1)
             {
-                return "Invalid position";
+                return null;
             }
 
             QuickSort(students, 0, index - 1);
-            return students[position - 1].GetName();
+            return students[position - 1];
         }
 
     }

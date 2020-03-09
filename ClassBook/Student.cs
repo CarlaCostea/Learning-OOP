@@ -14,18 +14,13 @@ namespace ClassBook
     }
     public class Student
     {
-        private string studentName;
-        private Grade[] grades = new Grade[10];
+        readonly string studentName;
+        readonly Grade[] grades = new Grade[10];
         private int index = 0;
 
         public Student(string studentName)
         {
             this.studentName = studentName;
-        }
-
-        public string GetName()
-        {
-            return studentName;
         }
 
         public void AddGradeInGrades(Grade grade)
@@ -40,11 +35,8 @@ namespace ClassBook
             int indexPerSubject = 0;
             for (int i = 0; i < index; i++)
             {
-                if (grades[i].subject == subject)
-                {
-                    sumOfGrades = grades[i].AddToSum(sumOfGrades);
-                    indexPerSubject++;
-                }
+                sumOfGrades = grades[i].AddToSum(subject, sumOfGrades);
+                indexPerSubject++;
             }
 
             return sumOfGrades / indexPerSubject;
@@ -57,5 +49,9 @@ namespace ClassBook
             return sumOfGeneral/numberOfSubjects;
         }
 
+        internal bool HasName(string name)
+        {
+            return studentName == name;
+        }
     }
 }
