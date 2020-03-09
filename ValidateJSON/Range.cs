@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ValidateJSON
 {
@@ -17,7 +15,12 @@ namespace ValidateJSON
 
         public bool Match(string text)
         {
-            return !string.IsNullOrEmpty(text);
+            if (string.IsNullOrEmpty(text))
+            {
+                return false;
+            }
+
+            return start <= text[0] && text[0] <= end;
         }
     }
 }
