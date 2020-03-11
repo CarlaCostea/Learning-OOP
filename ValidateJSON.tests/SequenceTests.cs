@@ -42,5 +42,17 @@ namespace ValidateJSON.tests
             Assert.False(match.Success());
             Assert.Null(match.RemainingText());
         }
+
+        [Fact]
+        public void EmptyStringShoudReturnFalse()
+        {
+            var ab = new Sequence(
+                new Character('a'),
+                new Character('x')
+            );
+            var match = ab.Match("");
+            Assert.False(match.Success());
+            Assert.Equal("", match.RemainingText());
+        }
     }
 }
