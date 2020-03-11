@@ -182,5 +182,30 @@ namespace ValidateJSON.tests
             Assert.False(match.Success());
             Assert.Equal("abc", match.RemainingText());
         }
+
+
+        [Fact]
+        public void SequenceOfRepeteadSequencesOnNullShouldReturnFalse()
+        {
+            var hex = new Choice(
+                new Range('0', '9'),
+
+                new Range('a', 'f'),
+                new Range('A', 'F')
+            );
+
+            var hexSeq = new Sequence(
+                new Character('u'),
+                new Sequence(
+                    hex,
+                    hex,
+                    hex,
+                    hex
+                )
+            );
+            var match = hexSeq.Match(null);
+            Assert.False(match.Success());
+            Assert.Null(match.RemainingText());
+        }
     }
 }
