@@ -11,32 +11,36 @@ namespace ValidateJSON.tests
         public void IfStringIsNullWeShouldReturnFalse()
         {
             var x = new Character('x');
-            var match = new Match(null, false);
-            Assert.Equal(match, x.Match(null));
+            var match = x.Match(null);
+            Assert.False(match.Success());
+            Assert.Null(match.RemainingText());
         }
 
         [Fact]
         public void IfStringIsEmptyWeShouldReturnFalse()
         {
             var x = new Character('x');
-            var match = new Match(null, false);
-            Assert.Equal(match, x.Match(null));
+            var match = x.Match("");
+            Assert.False(match.Success());
+            Assert.Equal("", match.RemainingText());
         }
 
         [Fact]
         public void IfFirstLetterIsInStringWeShouldReturnTrue()
         {
             var x = new Character('x');
-            var match = new Match("tb", true);
-            Assert.Equal(match, x.Match("xtb"));
+            var match = x.Match("xtb");
+            Assert.True(match.Success());
+            Assert.Equal("tb", match.RemainingText());
         }
 
         [Fact]
         public void IfFirstLetterIsNotInStringWeShouldReturnFalse()
         {
             var x = new Character('x');
-            var match = new Match("wtb", false);
-            Assert.Equal(match, x.Match("wtb"));
+            var match = x.Match("wtb");
+            Assert.False(match.Success());
+            Assert.Equal("wtb", match.RemainingText());
         }
     }
 }

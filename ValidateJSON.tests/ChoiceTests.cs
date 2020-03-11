@@ -14,7 +14,9 @@ namespace ValidateJSON.tests
                 new Character('0'),
                 new Range('1', '9')
             );
-            Assert.True(digit.Match("0FE"));
+            var match = digit.Match("0FE");
+            Assert.True(match.Success());
+            Assert.Equal("FE", match.RemainingText());
         }
         [Fact]
         public void MatchReturnsFalseForTextThatDoesNotMatchAnyChoicePatterns()
@@ -23,7 +25,9 @@ namespace ValidateJSON.tests
                 new Character('0'),
                 new Range('1', '9')
             );
-            Assert.False(digit.Match("FE"));
+            var match = digit.Match("FE");
+            Assert.False(match.Success());
+            Assert.Equal("FE", match.RemainingText());
         }
         [Fact]
         public void MatchReturnsTrueForTextMatchingTheSecondChoicePattern()
@@ -32,7 +36,9 @@ namespace ValidateJSON.tests
                 new Character('0'),
                 new Range('1', '9')
             );
-            Assert.True(digit.Match("1FE"));
+            var match = digit.Match("1FE");
+            Assert.True(match.Success());
+            Assert.Equal("FE", match.RemainingText());
         }
         [Fact]
         public void MatchReturnsTrueForTextMatchingChoiceOfChoicesPatterns()
@@ -48,8 +54,9 @@ namespace ValidateJSON.tests
                         new Range('A', 'F')
                         )
             );
-
-            Assert.True(hex.Match("1FE"));
+            var match = hex.Match("1FE");
+            Assert.True(match.Success());
+            Assert.Equal("FE", match.RemainingText());
         }
 
         [Fact]
@@ -66,8 +73,9 @@ namespace ValidateJSON.tests
                         new Range('A', 'F')
                         )
             );
-
-            Assert.False(hex.Match("gFE"));
+            var match = hex.Match("gFE");
+            Assert.False(match.Success());
+            Assert.Equal("gFE", match.RemainingText());
         }
     }
 }
