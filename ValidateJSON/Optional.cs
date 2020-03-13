@@ -11,7 +11,13 @@
 
         public IMatch Match(string text)
         {
-            return null;
+            var match = pattern.Match(text);
+            if (match.Success())
+            {
+                return pattern.Match(text);
+            }
+
+            return new Match(text, true);
         }
     }
 }
