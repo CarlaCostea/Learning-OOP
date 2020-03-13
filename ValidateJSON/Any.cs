@@ -11,20 +11,9 @@
 
         public IMatch Match(string text)
         {
-            if (string.IsNullOrEmpty(text))
-            {
-                return new Match(text, false);
-            }
-
-            for (int i = 0; i < accepted.Length; i++)
-            {
-                if (text[0] == accepted[i])
-                {
-                    return new Match(text.Substring(1), true);
-                }
-            }
-
-            return new Match(text, false);
+            return string.IsNullOrEmpty(text) || !accepted.Contains(text[0])
+                ? new Match(text, false)
+                : new Match(text.Substring(1), true);
         }
     }
 }

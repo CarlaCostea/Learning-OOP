@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ValidateJSON
+﻿namespace ValidateJSON
 {
-    class Text
+    public class Text : IPattern
     {
+        private readonly string prefix;
+
+        public Text(string prefix)
+        {
+            this.prefix = prefix;
+        }
+
+        public IMatch Match(string text)
+        {
+            return null;
+        }
     }
 }

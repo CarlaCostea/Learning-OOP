@@ -111,7 +111,7 @@
     <Rule Id="CA1717" Action="Error" />
     <Rule Id="CA1720" Action="Error" />
     <Rule Id="CA1721" Action="Error" />
-    <Rule Id="CA1724" Action="Error" />
+    <Rule Id="CA1724" Action="None" />
     <Rule Id="CA1725" Action="Error" />
     <Rule Id="CA1802" Action="Error" />
     <Rule Id="CA1806" Action="Error" />
