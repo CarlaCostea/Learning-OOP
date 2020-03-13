@@ -11,7 +11,9 @@
 
         public IMatch Match(string text)
         {
-            return null;
+            return string.IsNullOrEmpty(text) || !text.StartsWith(prefix)
+                ? new Match(text, false)
+                : new Match(text.Substring(prefix.Length), true);
         }
     }
 }
