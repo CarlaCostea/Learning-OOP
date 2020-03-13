@@ -33,5 +33,14 @@ namespace ValidateJSON.tests
             Assert.True(match.Success());
             Assert.Equal("truX", match.RemainingText());
         }
+
+        [Fact]
+        public void IfStringIsNullWeShouldReturnFalse()
+        {
+            var empty = new Text("");
+            var match = empty.Match(null);
+            Assert.False(match.Success());
+            Assert.Null(match.RemainingText());
+        }
     }
 }

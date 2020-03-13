@@ -18,3 +18,8 @@ https://www.juniormind.com/content/dump/choice.html
 https://www.juniormind.com/content/dump/sequence.html
 
 https://juniormind.com/content/dump/any.html
+
+https://juniormind.com/content/dump/text.html
+
+https://juniormind.com/content/dump/many.html
+
