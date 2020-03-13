@@ -11,7 +11,20 @@
 
         public IMatch Match(string text)
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrEmpty(text))
+            {
+                return new Match(text, false);
+            }
+
+            for (int i = 0; i < accepted.Length; i++)
+            {
+                if (text[0] == accepted[i])
+                {
+                    return new Match(text.Substring(1), true);
+                }
+            }
+
+            return new Match(text, false);
         }
     }
 }
