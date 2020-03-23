@@ -30,7 +30,7 @@ namespace ValidateJSON.tests
         public void NegativeSubunitarShouldReturnTrue()
         {
             var number = new Number();
-            Assert.False(number.Match("-0.12345").Success());
+            Assert.True(number.Match("-0.12345").Success());
         }
         [Fact]
         public void TreatsZeroCorecttly()
