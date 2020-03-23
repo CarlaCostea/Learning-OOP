@@ -10,27 +10,27 @@ namespace ValidateJSON.tests
         [Fact]
         public void CorrectFloatNumberShouldReturnTrue3()
         {
-            string input = "12.12";
-            Assert.True(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.True(number.Match("12.2").Success());
         }
 
         [Fact]
         public void CorrectFloatNumberShouldReturnTrue4()
         {
-            string input = "-12.12";
-            Assert.True(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.True(number.Match("-12.12").Success());
         }
         [Fact]
         public void SubunitarShouldReturnTrue()
         {
-            string input = "0.1312";
-            Assert.True(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.False(number.Match("0.11243").Success());
         }
         [Fact]
         public void NegativeSubunitarShouldReturnTrue()
         {
-            string input = "-0.1312";
-            Assert.True(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.False(number.Match("-0.12345").Success());
         }
         [Fact]
         public void TreatsZeroCorecttly()
@@ -50,6 +50,7 @@ namespace ValidateJSON.tests
         {
             var number = new Number();
             Assert.True(number.Match("1").Success());
+            Assert.False(number.Match("N").Success());
         }
         [Fact]
         public void NaturalsShouldReturnTrue()
@@ -72,38 +73,38 @@ namespace ValidateJSON.tests
         [Fact]
         public void ExponentialShouldReturnTrue()
         {
-            string input = "12.123e3";
-            Assert.True(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.True(number.Match("12.123e3").Success());
         }
         [Fact]
         public void CorrectExponentialFormatShouldReturnTrue1()
         {
-            string input = "12.123E+3";
-            Assert.True(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.True(number.Match("12.123E+3").Success());
         }
         [Fact]
         public void CorrectExponentialFormatShouldReturnTrue2()
         {
-            string input = "12.123E-2";
-            Assert.True(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.True(number.Match("12.123E-2").Success());
         }
         [Fact]
         public void InvalidExponentialFormatShouldReturnFalse()
         {
-            string input = "12.123E";
-            Assert.False(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.False(number.Match("12.123E").Success());
         }
         [Fact]
         public void InvalidExponentialFormatShouldReturnFalse1()
         {
-            string input = "12.123E+";
-            Assert.False(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.False(number.Match("12.123E+").Success());
         }
         [Fact]
         public void InvalidExponentialFormatShouldReturnFalse2()
         {
-            string input = "12.123E+.";
-            Assert.False(ValidateJSONNumber.ValidateInput(input));
+            var number = new Number();
+            Assert.False(number.Match("12.123E+.").Success());
         }
     }
 }
