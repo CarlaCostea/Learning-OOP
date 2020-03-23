@@ -12,7 +12,7 @@
             var natural = new Sequence(onenine, new Many(digits));
             var integer = new Sequence(new Optional(new Character('-')), natural);
             var fractional = new Sequence(new Character('.'), natural);
-            this.pattern = new Sequence(new Choice(integer, zero), new Optional(fractional));
+            this.pattern = new Sequence(integer, new Optional(fractional));
         }
 
         public IMatch Match(string text)
