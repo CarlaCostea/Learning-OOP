@@ -14,7 +14,7 @@
             var natural = new Sequence(onenine, new Many(digit));
             var integer = new Choice(zero, new Sequence(new Optional(new Character('-')), natural));
             var fractional = new Sequence(new Character('.'), digits);
-            var exponential = new Sequence(new Any("Ee"), sign, digits);
+            var exponential = new Sequence(new Any("Ee"), new Optional(sign), digits);
             pattern = new Sequence(integer, new Optional(fractional), new Optional(exponential));
         }
 
