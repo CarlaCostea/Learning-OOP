@@ -24,7 +24,7 @@ namespace ValidateJSON.tests
         public void SubunitarShouldReturnTrue()
         {
             var number = new Number();
-            Assert.False(number.Match("0.11243").Success());
+            Assert.True(number.Match("0.11243").Success());
         }
         [Fact]
         public void NegativeSubunitarShouldReturnTrue()
