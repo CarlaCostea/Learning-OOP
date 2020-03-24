@@ -37,13 +37,15 @@ namespace ValidateJSON.tests
         {
             var number = new Number();
             Assert.True(number.Match("0").Success());
-            Assert.False(number.Match("00").Success());
+            Assert.True(number.Match("00").Success());
+            Assert.Equal("0", number.Match("00").RemainingText());
         }
         [Fact]
-        public void NumberPreceededByZeroShouldReturnFalse()
+        public void NumberPreceededByZeroShouldReturnNumber()
         {
             var number = new Number();
-            Assert.False(number.Match("01").Success());
+            Assert.True(number.Match("01").Success());
+            Assert.Equal("1", number.Match("01").RemainingText());
         }
         [Fact]
         public void OneDigitShouldReturnTrue()
@@ -92,19 +94,22 @@ namespace ValidateJSON.tests
         public void InvalidExponentialFormatShouldReturnFalse()
         {
             var number = new Number();
-            Assert.False(number.Match("12.123E").Success());
+            Assert.True(number.Match("12.123E").Success());
+            Assert.Equal("E", number.Match("12.123E").RemainingText());
         }
         [Fact]
         public void InvalidExponentialFormatShouldReturnFalse1()
         {
             var number = new Number();
-            Assert.False(number.Match("12.123E+").Success());
+            Assert.True(number.Match("12.123E+").Success());
+            Assert.Equal("E+", number.Match("12.123E+").RemainingText());
         }
         [Fact]
         public void InvalidExponentialFormatShouldReturnFalse2()
         {
             var number = new Number();
-            Assert.False(number.Match("12.123E+.").Success());
+            Assert.True(number.Match("12.123E+.").Success());
+            Assert.Equal("E+.", number.Match("12.123E+.").RemainingText());
         }
     }
 }
