@@ -6,7 +6,13 @@
 
         public String()
         {
-            pattern = new Many(pattern);
+            var hex = new Choice(new Range('1', '9'), new Range('A', 'F'), new Range('a', 'f'));
+            var character = new Choice(new Any(" !"), new Range('#', '['), new Range(']', '\uFFFF'));
+            var quotes = new Character('"');
+            var escapeChar = new Character('\\');
+            var controlChar = new Sequence(escapeChar, new Any("abtnvfr\\\"/"));
+            var unicode = new Sequence(escapeChar, new Character('u'), hex, hex, hex, hex);
+            pattern = new Sequence(quotes, new Optional(character), new Optional(controlChar), new Optional(unicode), quotes);
         }
 
         public IMatch Match(string text)

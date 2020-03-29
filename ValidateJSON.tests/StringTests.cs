@@ -26,8 +26,9 @@ namespace ValidateJSON.tests
         [Fact]
         public void WhenInputContainsBackslashWeShouldReturnFalse()
         {
-            string input = "\"\\\"";
-            Assert.False(ValidateString.ValidateJsonString(input));
+            var @string = new String();
+            Assert.True(@string.Match("\"\\\"").Success());
+            Assert.Equal("\\", @string.Match("\"\\\"").RemainingText());
         }
         [Fact]
         public void WhenInputContainsValidUnicodeWeShouldReturnTrueAndEmptyString()
