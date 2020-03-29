@@ -6,7 +6,7 @@
 
         public String()
         {
-            var hex = new Choice(new Range('1', '9'), new Range('A', 'F'), new Range('a', 'f'));
+            var hex = new Choice(new Range('0', '9'), new Range('A', 'F'), new Range('a', 'f'));
             var character = new Choice(new Any(" !"), new Range('#', '['), new Range(']', '\uFFFF'));
             var quotes = new Character('"');
             var escapeChar = new Character('\\');

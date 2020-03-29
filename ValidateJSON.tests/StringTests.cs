@@ -16,7 +16,7 @@ namespace ValidateJSON.tests
         }
 
         [Fact]
-        public void WhenInputContainsDoubleQuotesWeShouldReturnRemainingText()
+        public void WhenInputContainsDoubleQuotesWeShouldReturnTrueAndRemainingText()
         {
             var @string = new String();
             Assert.True(@string.Match("\"\"\"").Success());
@@ -27,7 +27,7 @@ namespace ValidateJSON.tests
         public void WhenInputContainsBackslashWeShouldReturnFalse()
         {
             var @string = new String();
-            Assert.True(@string.Match("\"\\\"").Success());
+            Assert.False(@string.Match("\"\\\"").Success());
             Assert.Equal("\\", @string.Match("\"\\\"").RemainingText());
         }
         [Fact]
@@ -42,7 +42,7 @@ namespace ValidateJSON.tests
         public void WhenInputContainsWrongUnicodeWeShouldReturnFalse()
         {
             var @string = new String();
-            Assert.True(@string.Match("\"\\u002\"").Success());
+            Assert.False(@string.Match("\"\\u002\"").Success());
             Assert.Equal("\"\\u002\"", @string.Match("\"\\u002\"").RemainingText());
         }
 
@@ -78,7 +78,7 @@ namespace ValidateJSON.tests
         public void RandomInvalidTest0()
         {
             var @string = new String();
-            Assert.True(@string.Match("Test\"").Success());
+            Assert.False(@string.Match("Test\"").Success());
             Assert.Equal("Test\"", @string.Match("Test\"").RemainingText());
         }
         [Fact]
