@@ -28,7 +28,7 @@ namespace ValidateJSON.tests
         {
             var @string = new String();
             Assert.False(@string.Match("\"\\\"").Success());
-            Assert.Equal("\\", @string.Match("\"\\\"").RemainingText());
+            Assert.Equal("\"\\\"", @string.Match("\"\\\"").RemainingText());
         }
         [Fact]
         public void WhenInputContainsValidUnicodeWeShouldReturnTrueAndEmptyString()

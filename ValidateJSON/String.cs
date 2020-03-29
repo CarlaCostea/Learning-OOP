@@ -12,7 +12,7 @@
             var escapeChar = new Character('\\');
             var controlChar = new Sequence(escapeChar, new Any("abtnvfr\\\"/"));
             var unicode = new Sequence(escapeChar, new Character('u'), hex, hex, hex, hex);
-            pattern = new Sequence(quotes, new Optional(character), new Optional(controlChar), new Optional(unicode), quotes);
+            pattern = new Sequence(quotes, new Many(new Choice(character, controlChar, unicode)), quotes);
         }
 
         public IMatch Match(string text)
