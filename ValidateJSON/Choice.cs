@@ -1,8 +1,12 @@
-﻿namespace ValidateJSON
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ValidateJSON
 {
     public class Choice : IPattern
     {
-        private readonly IPattern[] patterns;
+        private IPattern[] patterns;
 
         public Choice(params IPattern[] patterns)
         {
@@ -21,6 +25,13 @@
             }
 
             return new Match(text, false);
+        }
+
+        public void Add(IPattern pattern)
+        {
+            List<IPattern> list = patterns.ToList();
+            list.Add(pattern);
+            patterns = list.ToArray();
         }
     }
 }

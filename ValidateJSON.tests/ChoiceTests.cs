@@ -77,5 +77,28 @@ namespace ValidateJSON.tests
             Assert.False(match.Success());
             Assert.Equal("gFE", match.RemainingText());
         }
+        [Fact]
+        public void AddPattern()
+        {
+            var value = new Choice(
+                        new String(),
+                        new Number(),
+                        new Text("true"),
+                        new Text("false"),
+                        new Text("null")
+                    );
+
+            var array = new Many(new Range('1', '9'));
+            var @object = new Many(new Range('1', '9'));
+            value.Add(array);
+            value.Add(@object);
+            var resultedValue = new Choice(
+                        new String(),
+                        new Number(),
+                        new Text("true"),
+                        new Text("false"),
+                        new Text("null"), array, @object);
+            Assert.Equal(value.ToString(), resultedValue.ToString());
+        }
     }
 }
