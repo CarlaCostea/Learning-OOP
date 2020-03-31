@@ -12,7 +12,13 @@
             var value = new Value();
             var element = new List(value, ws);
             var elements = new Choice(element, new Sequence(element, new Character(','), new OneOrMore(element)));
+            var array = new Choice(new Sequence(new Character('['), ws, new Character(']')), new Sequence(new Character('['), elements, new Character(']')));
+            var member = new Sequence(ws, @string, ws, new Character(':'), element);
+            var members = new Choice(member, new Sequence(member, new Character(','), new OneOrMore(member)));
+            var @object = new Choice(new Sequence(new Character('{'), ws, new Character('}')), new Sequence(new Character('{'), members, new Character('}')));
             pattern = new Choice(
+                        array,
+                        @object,
                         @string,
                         number,
                         new Text("true"),
