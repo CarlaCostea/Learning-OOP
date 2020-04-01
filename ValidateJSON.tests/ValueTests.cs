@@ -11,7 +11,7 @@ namespace ValidateJSON.tests
         public void ValidJSONShouldReturnTrue()
         {
             var value = new Value();
-            Assert.True(value.Match("ValidJSON").Success());
+            Assert.True(value.Match("\"ValidJSON\"").Success());
         }
     }
 }
