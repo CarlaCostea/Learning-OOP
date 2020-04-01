@@ -18,7 +18,7 @@
 
             var ws = new Any(" \r\n\t");
 
-            var element = new List(value, ws);
+            var element = new Sequence(ws, value, ws);
             var elements = new List(element, new Character(','));
 
             var array = new Choice(
