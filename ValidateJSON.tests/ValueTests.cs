@@ -13,5 +13,19 @@ namespace ValidateJSON.tests
             var value = new Value();
             Assert.True(value.Match("\"ValidJSON\"").Success());
         }
+
+        [Fact]
+        public void ValidJSONShouldReturnTrue1()
+        {
+            var value = new Value();
+            Assert.True(value.Match("{ \"name\":\"John\", \"age\":30, \"car\":null }").Success());
+        }
+
+        [Fact]
+        public void ValidJSONShouldReturnTrue2()
+        {
+            var value = new Value();
+            Assert.True(value.Match("[ \"Ford\", \"BMW\", \"Fiat\" ]").Success());
+        }
     }
 }
