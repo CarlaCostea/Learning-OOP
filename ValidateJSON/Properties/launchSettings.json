@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ValidateJSON": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\carla\\source\\Learning-OOP\\Learning-OOP\\ValidJSONExample.txt"
+    }
+  }
+}
