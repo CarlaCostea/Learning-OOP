@@ -1,12 +1,9 @@
-﻿using System;
-
-namespace ArrayOperations
+﻿namespace ArrayOperations
 {
     class Program
     {
         static void Main()
         {
-           
         }
     }
 }
