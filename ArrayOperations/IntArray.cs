@@ -52,14 +52,14 @@ namespace ArrayOperations
 
         public void Insert(int index, int element)
         {
+            Array.Resize(ref elements, elements.Length + 1);
             ShiftRight(index);
 
             elements[index] = element;
         }
 
-        public void ShiftRight(int index)
+        private void ShiftRight(int index)
         {
-            Array.Resize(ref elements, elements.Length + 1);
             for (int i = elements.Length - 1; i > index + 1; i--)
             {
                 elements[i] = elements[i - 1];
@@ -73,25 +73,27 @@ namespace ArrayOperations
 
         public void Remove(int element)
         {
-            // șterge prima apariție a elementului din șir
-            for (int i = 0; i < elements.Length; i++)
+            if (IndexOf(element) == -1)
             {
-                if (elements[i] == element)
-                {
-                    RemoveAt(i);
-                    break;
-                }
+                return;
             }
+
+            RemoveAt(IndexOf(element));
         }
 
         public void RemoveAt(int index)
+        {
+            ShiftLeft(index);
+
+            Array.Resize(ref elements, elements.Length - 1);
+        }
+
+        private void ShiftLeft(int index)
         {
             for (int i = index; i < elements.Length - 1; i++)
             {
                 elements[i] = elements[i + 1];
             }
-
-            Array.Resize(ref elements, elements.Length - 1);
         }
     }
 }
