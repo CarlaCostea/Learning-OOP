@@ -5,21 +5,30 @@ namespace ArrayOperations
     public class IntArray
     {
         private int[] elements;
+        private int count;
 
         public IntArray()
         {
-            this.elements = new int[] { };
+            const int initialSize = 4;
+            this.elements = new int[initialSize];
         }
 
         public void Add(int element)
         {
-            Array.Resize(ref elements, elements.Length + 1);
-            elements[^1] = element;
+            const int doubleLength = 2;
+
+            if (count == elements.Length)
+            {
+                Array.Resize(ref elements, elements.Length * doubleLength);
+            }
+
+            elements[count] = element;
+            count++;
         }
 
         public int Count()
         {
-            return elements.Length;
+            return count;
         }
 
         public int Element(int index)
@@ -58,14 +67,6 @@ namespace ArrayOperations
             elements[index] = element;
         }
 
-        private void ShiftRight(int index)
-        {
-            for (int i = elements.Length - 1; i > index + 1; i--)
-            {
-                elements[i] = elements[i - 1];
-            }
-        }
-
         public void Clear()
         {
             Array.Resize(ref elements, 0);
@@ -84,8 +85,7 @@ namespace ArrayOperations
         public void RemoveAt(int index)
         {
             ShiftLeft(index);
-
-            Array.Resize(ref elements, elements.Length - 1);
+            count--;
         }
 
         private void ShiftLeft(int index)
@@ -93,6 +93,14 @@ namespace ArrayOperations
             for (int i = index; i < elements.Length - 1; i++)
             {
                 elements[i] = elements[i + 1];
+            }
+        }
+
+        private void ShiftRight(int index)
+        {
+            for (int i = elements.Length - 1; i > index + 1; i--)
+            {
+                elements[i] = elements[i - 1];
             }
         }
     }
