@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayOperations", "ArrayOperations.csproj", "{959CDC1D-AC6F-4551-9463-D1CD60DFA354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrayOperations", "ArrayOperations.csproj", "{959CDC1D-AC6F-4551-9463-D1CD60DFA354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayOperationsTests", "..\ArrayOperationsTests\ArrayOperationsTests.csproj", "{91899BDF-CF34-4DC7-9F7E-A4B0D6C28166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrayOperationsTests", "..\ArrayOperationsTests\ArrayOperationsTests.csproj", "{91899BDF-CF34-4DC7-9F7E-A4B0D6C28166}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

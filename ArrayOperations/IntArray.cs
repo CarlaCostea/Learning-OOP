@@ -4,14 +4,16 @@ namespace ArrayOperations
 {
     public class IntArray
     {
-        private readonly int count;
         private int[] elements;
 
         public IntArray()
         {
             // construiește noul șir
-            this.elements = new int[count];
-            this.count = elements.Length;
+            const int element1 = 2;
+            const int element2 = 3;
+            const int element3 = 4;
+            const int element4 = 5;
+            this.elements = new[] { 1, element1, element2, element3, element4 };
         }
 
         public void Add(int element)
@@ -24,7 +26,7 @@ namespace ArrayOperations
         public int Count()
         {
             // întoarce numărul de elemente din șir
-            return count;
+            return elements.Length;
         }
 
         public int Element(int index)
@@ -92,7 +94,7 @@ namespace ArrayOperations
             {
                 if (elements[i] == element)
                 {
-                    for (int j = i; j < elements.Length; j++)
+                    for (int j = i; j < elements.Length - 1; j++)
                     {
                         elements[j] = elements[j + 1];
                     }
@@ -107,7 +109,7 @@ namespace ArrayOperations
         public void RemoveAt(int index)
         {
             // șterge elementul de pe poziția dată
-            for (int i = index; i < elements.Length; i++)
+            for (int i = index; i < elements.Length - 1; i++)
             {
                 elements[i] = elements[i + 1];
             }
