@@ -8,56 +8,37 @@ namespace ArrayOperations
 
         public IntArray()
         {
-            // construiește noul șir
-            const int element1 = 2;
-            const int element2 = 3;
-            const int element3 = 4;
-            const int element4 = 5;
-            this.elements = new[] { 1, element1, element2, element3, element4 };
+            this.elements = new int[] { };
         }
 
         public void Add(int element)
         {
-            // adaugă un nou element la sfârșitul șirului
             Array.Resize(ref elements, elements.Length + 1);
             elements[^1] = element;
         }
 
         public int Count()
         {
-            // întoarce numărul de elemente din șir
             return elements.Length;
         }
 
         public int Element(int index)
         {
-            // întoarce elementul de la indexul dat
             return elements[index];
         }
 
         public void SetElement(int index, int element)
         {
-            // modifică valoarea elementului de la indexul dat
             elements[index] = element;
         }
 
         public bool Contains(int element)
         {
-            // întoarce true dacă elementul dat există în șir
-            for (int i = 0; i < elements.Length; i++)
-            {
-                if (elements[i] == element)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return IndexOf(element) != -1;
         }
 
         public int IndexOf(int element)
         {
-            // întoarce indexul elementului sau -1 dacă elementul nu se regăsește în șir
             for (int i = 0; i < elements.Length; i++)
             {
                 if (elements[i] == element)

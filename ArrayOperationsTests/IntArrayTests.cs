@@ -12,6 +12,11 @@ namespace ArrayOperationsTests
         public void AddNumberToArray()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             intArray.Add(6);
             intArray.Add(7);
             int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
@@ -22,6 +27,11 @@ namespace ArrayOperationsTests
         public void ReturnElementFromIndex()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             Assert.Equal(3, intArray.Element(2));
         }
 
@@ -29,6 +39,11 @@ namespace ArrayOperationsTests
         public void SetElementFromIndex()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             intArray.SetElement(2, 10);
             Assert.Equal(10, intArray.Element(2));
         }
@@ -38,6 +53,11 @@ namespace ArrayOperationsTests
         public void IfArrayContainsElementWeShouldReturnTrue()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             intArray.SetElement(2, 10);
             Assert.True(intArray.Contains(10));
         }
@@ -46,6 +66,11 @@ namespace ArrayOperationsTests
         public void IfArrayDoesNotContainElementWeShouldReturnFalse()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             intArray.SetElement(2, 10);
             Assert.False(intArray.Contains(11));
         }
@@ -54,6 +79,11 @@ namespace ArrayOperationsTests
         public void IfArrayContainsElementWeShouldReturnIndexElseReturnMinusOne()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             intArray.SetElement(2, 10);
             Assert.Equal(2, intArray.IndexOf(10));
             Assert.Equal(-1, intArray.IndexOf(11));
@@ -63,6 +93,11 @@ namespace ArrayOperationsTests
         public void InsertElementAtPosition()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             Assert.Equal(5, intArray.Count());
             intArray.Insert(2, 10);
             Assert.Equal(2, intArray.IndexOf(10));
@@ -74,6 +109,11 @@ namespace ArrayOperationsTests
         public void ClearArray()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             intArray.Clear();
             Assert.Equal(0, intArray.Count());
         }
@@ -82,6 +122,11 @@ namespace ArrayOperationsTests
         public void RemoveFirstOccurenceOfElement()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             intArray.Remove(2);
             Assert.Equal(4, intArray.Count());
             Assert.Equal(-1, intArray.IndexOf(2));
@@ -91,6 +136,11 @@ namespace ArrayOperationsTests
         public void RemoveElementAtIndex()
         {
             IntArray intArray = new IntArray();
+            intArray.Add(1);
+            intArray.Add(2);
+            intArray.Add(3);
+            intArray.Add(4);
+            intArray.Add(5);
             intArray.RemoveAt(2);
             Assert.Equal(4, intArray.Count());
             Assert.Equal(-1, intArray.IndexOf(3));
