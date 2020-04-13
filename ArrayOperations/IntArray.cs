@@ -15,13 +15,7 @@ namespace ArrayOperations
 
         public void Add(int element)
         {
-            const int doubleLength = 2;
-
-            if (count == elements.Length)
-            {
-                Array.Resize(ref elements, elements.Length * doubleLength);
-            }
-
+            VerifyNumberOfElements();
             elements[count] = element;
             count++;
         }
@@ -61,15 +55,17 @@ namespace ArrayOperations
 
         public void Insert(int index, int element)
         {
-            Array.Resize(ref elements, elements.Length + 1);
+            VerifyNumberOfElements();
             ShiftRight(index);
 
             elements[index] = element;
+            count++;
         }
 
         public void Clear()
         {
             Array.Resize(ref elements, 0);
+            count = 0;
         }
 
         public void Remove(int element)
@@ -102,6 +98,18 @@ namespace ArrayOperations
             {
                 elements[i] = elements[i - 1];
             }
+        }
+
+        private void VerifyNumberOfElements()
+            {
+            const int doubleLength = 2;
+
+            if (count != elements.Length)
+            {
+                return;
+            }
+
+            Array.Resize(ref elements, elements.Length * doubleLength);
         }
     }
 }
