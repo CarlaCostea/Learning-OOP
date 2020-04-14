@@ -20,7 +20,7 @@ namespace ArrayOperationsTests
             intArray.Add(6);
             intArray.Add(7);
             int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
-            Assert.Equal(test.Length, intArray.Count());
+            Assert.Equal(test.Length, intArray.Count);
         }
 
         [Fact]
@@ -98,11 +98,11 @@ namespace ArrayOperationsTests
             intArray.Add(3);
             intArray.Add(4);
             intArray.Add(5);
-            Assert.Equal(5, intArray.Count());
+            Assert.Equal(5, intArray.Count);
             intArray.Insert(2, 10);
             Assert.Equal(2, intArray.IndexOf(10));
             Assert.Equal(4, intArray.Element(3));
-            Assert.Equal(6, intArray.Count());
+            Assert.Equal(6, intArray.Count);
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace ArrayOperationsTests
             intArray.Add(4);
             intArray.Add(5);
             intArray.Clear();
-            Assert.Equal(0, intArray.Count());
+            Assert.Equal(0, intArray.Count);
         }
 
         [Fact]
@@ -128,7 +128,7 @@ namespace ArrayOperationsTests
             intArray.Add(4);
             intArray.Add(5);
             intArray.Remove(2);
-            Assert.Equal(4, intArray.Count());
+            Assert.Equal(4, intArray.Count);
             Assert.Equal(-1, intArray.IndexOf(2));
         }
 
@@ -142,7 +142,7 @@ namespace ArrayOperationsTests
             intArray.Add(4);
             intArray.Add(5);
             intArray.RemoveAt(2);
-            Assert.Equal(4, intArray.Count());
+            Assert.Equal(4, intArray.Count);
             Assert.Equal(-1, intArray.IndexOf(3));
         }
     }

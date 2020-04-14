@@ -13,16 +13,13 @@ namespace ArrayOperations
             this.elements = new int[initialSize];
         }
 
+        public int Count { get; }
+
         public void Add(int element)
         {
             VerifyNumberOfElements();
             elements[count] = element;
             count++;
-        }
-
-        public int Count()
-        {
-            return count;
         }
 
         public int Element(int index)
