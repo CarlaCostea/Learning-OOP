@@ -42,7 +42,7 @@ namespace ArrayOperations
 
         public int IndexOf(int element)
         {
-            for (int i = 0; i < elements.Length; i++)
+            for (int i = 0; i < count; i++)
             {
                 if (elements[i] == element)
                 {
@@ -86,7 +86,7 @@ namespace ArrayOperations
 
         private void ShiftLeft(int index)
         {
-            for (int i = index; i < elements.Length - 1; i++)
+            for (int i = index; i < count - 1; i++)
             {
                 elements[i] = elements[i + 1];
             }
@@ -94,7 +94,7 @@ namespace ArrayOperations
 
         private void ShiftRight(int index)
         {
-            for (int i = elements.Length - 1; i > index + 1; i--)
+            for (int i = count - 1; i > index + 1; i--)
             {
                 elements[i] = elements[i - 1];
             }
