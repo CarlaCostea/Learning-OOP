@@ -5,7 +5,6 @@ namespace ArrayOperations
     public class IntArray
     {
         private int[] elements;
-        private int count;
 
         public IntArray()
         {
@@ -13,13 +12,13 @@ namespace ArrayOperations
             this.elements = new int[initialSize];
         }
 
-        public int Count { get; }
+        public int Count { get; private set; }
 
         public void Add(int element)
         {
             VerifyNumberOfElements();
-            elements[count] = element;
-            count++;
+            elements[Count] = element;
+            Count++;
         }
 
         public int Element(int index)
@@ -39,7 +38,7 @@ namespace ArrayOperations
 
         public int IndexOf(int element)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (elements[i] == element)
                 {
@@ -56,13 +55,13 @@ namespace ArrayOperations
             ShiftRight(index);
 
             elements[index] = element;
-            count++;
+            Count++;
         }
 
         public void Clear()
         {
             Array.Resize(ref elements, 0);
-            count = 0;
+            Count = 0;
         }
 
         public void Remove(int element)
@@ -78,12 +77,12 @@ namespace ArrayOperations
         public void RemoveAt(int index)
         {
             ShiftLeft(index);
-            count--;
+            Count--;
         }
 
         private void ShiftLeft(int index)
         {
-            for (int i = index; i < count - 1; i++)
+            for (int i = index; i < Count - 1; i++)
             {
                 elements[i] = elements[i + 1];
             }
@@ -91,7 +90,7 @@ namespace ArrayOperations
 
         private void ShiftRight(int index)
         {
-            for (int i = count - 1; i > index + 1; i--)
+            for (int i = Count - 1; i > index + 1; i--)
             {
                 elements[i] = elements[i - 1];
             }
@@ -101,7 +100,7 @@ namespace ArrayOperations
             {
             const int doubleLength = 2;
 
-            if (count != elements.Length)
+            if (Count != elements.Length)
             {
                 return;
             }
