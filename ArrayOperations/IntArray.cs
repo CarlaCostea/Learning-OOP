@@ -4,26 +4,26 @@ namespace ArrayOperations
 {
     public class IntArray
     {
-        private int[] elements;
+        public int[] Elements;
 
         public IntArray()
         {
             const int initialSize = 4;
-            this.elements = new int[initialSize];
+            Elements = new int[initialSize];
         }
 
         public int Count { get; private set; }
 
         public int this[int index]
         {
-            get => elements[index];
-            set => elements[index] = value;
+            get => Elements[index];
+            set => Elements[index] = value;
         }
 
         public void Add(int element)
         {
             VerifyNumberOfElements();
-            elements[Count] = element;
+            Elements[Count] = element;
             Count++;
         }
 
@@ -36,7 +36,7 @@ namespace ArrayOperations
         {
             for (int i = 0; i < Count; i++)
             {
-                if (elements[i] == element)
+                if (Elements[i] == element)
                 {
                     return i;
                 }
@@ -50,13 +50,13 @@ namespace ArrayOperations
             VerifyNumberOfElements();
             ShiftRight(index);
 
-            elements[index] = element;
+            Elements[index] = element;
             Count++;
         }
 
         public void Clear()
         {
-            Array.Resize(ref elements, 0);
+            Array.Resize(ref Elements, 0);
             Count = 0;
         }
 
@@ -80,7 +80,7 @@ namespace ArrayOperations
         {
             for (int i = index; i < Count - 1; i++)
             {
-                elements[i] = elements[i + 1];
+                Elements[i] = Elements[i + 1];
             }
         }
 
@@ -88,7 +88,7 @@ namespace ArrayOperations
         {
             for (int i = Count - 1; i > index + 1; i--)
             {
-                elements[i] = elements[i - 1];
+                Elements[i] = Elements[i - 1];
             }
         }
 
@@ -96,12 +96,12 @@ namespace ArrayOperations
             {
             const int doubleLength = 2;
 
-            if (Count != elements.Length)
+            if (Count != Elements.Length)
             {
                 return;
             }
 
-            Array.Resize(ref elements, elements.Length * doubleLength);
+            Array.Resize(ref Elements, Elements.Length * doubleLength);
         }
     }
 }
