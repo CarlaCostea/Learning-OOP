@@ -14,21 +14,17 @@ namespace ArrayOperations
 
         public int Count { get; private set; }
 
+        public int this[int index]
+        {
+            get => elements[index];
+            set => elements[index] = value;
+        }
+
         public void Add(int element)
         {
             VerifyNumberOfElements();
             elements[Count] = element;
             Count++;
-        }
-
-        public int Element(int index)
-        {
-            return elements[index];
-        }
-
-        public void SetElement(int index, int element)
-        {
-            elements[index] = element;
         }
 
         public bool Contains(int element)

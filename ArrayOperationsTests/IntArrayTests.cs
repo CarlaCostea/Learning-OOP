@@ -32,7 +32,7 @@ namespace ArrayOperationsTests
             intArray.Add(3);
             intArray.Add(4);
             intArray.Add(5);
-            Assert.Equal(3, intArray.Element(2));
+            Assert.Equal(3, intArray[2]);
         }
 
         [Fact]
@@ -44,8 +44,8 @@ namespace ArrayOperationsTests
             intArray.Add(3);
             intArray.Add(4);
             intArray.Add(5);
-            intArray.SetElement(2, 10);
-            Assert.Equal(10, intArray.Element(2));
+            intArray[2] =10;
+            Assert.Equal(10, intArray[2]);
         }
 
 
@@ -58,7 +58,7 @@ namespace ArrayOperationsTests
             intArray.Add(3);
             intArray.Add(4);
             intArray.Add(5);
-            intArray.SetElement(2, 10);
+            intArray[2] = 10;
             Assert.True(intArray.Contains(10));
         }
 
@@ -71,7 +71,7 @@ namespace ArrayOperationsTests
             intArray.Add(3);
             intArray.Add(4);
             intArray.Add(5);
-            intArray.SetElement(2, 10);
+            intArray[2] = 10;
             Assert.False(intArray.Contains(11));
         }
 
@@ -84,7 +84,7 @@ namespace ArrayOperationsTests
             intArray.Add(3);
             intArray.Add(4);
             intArray.Add(5);
-            intArray.SetElement(2, 10);
+            intArray[2] = 10;
             Assert.Equal(2, intArray.IndexOf(10));
             Assert.Equal(-1, intArray.IndexOf(11));
         }
@@ -101,7 +101,7 @@ namespace ArrayOperationsTests
             Assert.Equal(5, intArray.Count);
             intArray.Insert(2, 10);
             Assert.Equal(2, intArray.IndexOf(10));
-            Assert.Equal(4, intArray.Element(3));
+            Assert.Equal(4, intArray[3]);
             Assert.Equal(6, intArray.Count);
         }
 
