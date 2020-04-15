@@ -2,12 +2,15 @@
 {
     public class SortedIntArray : IntArray
     {
+        public int[] SortedElements;
+
         public SortedIntArray()
         {
-            QuickSort(ref Elements, 0, Count);
+            QuickSort(Elements, 0, Count);
+            this.SortedElements = Elements;
         }
 
-        private void QuickSort(ref int[] elements, int start, int end)
+        private void QuickSort(int[] elements, int start, int end)
         {
             int i;
             if (start >= end)
@@ -15,13 +18,13 @@
                 return;
             }
 
-            i = Partition(ref elements, start, end);
+            i = Partition(elements, start, end);
 
-            QuickSort(ref elements, start, i - 1);
-            QuickSort(ref elements, i + 1, end);
+            QuickSort(elements, start, i - 1);
+            QuickSort(elements, i + 1, end);
         }
 
-        private int Partition(ref int[] elements, int start, int end)
+        private int Partition(int[] elements, int start, int end)
         {
             int temp;
             double p = elements[end];
