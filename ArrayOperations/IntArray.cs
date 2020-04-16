@@ -4,26 +4,26 @@ namespace ArrayOperations
 {
     public class IntArray
     {
-        public int[] Elements;
+        private int[] elements;
 
         public IntArray()
         {
             const int initialSize = 4;
-            Elements = new int[initialSize];
+            elements = new int[initialSize];
         }
 
         public int Count { get; set; }
 
         public int this[int index]
         {
-            get => Elements[index];
-            set => Elements[index] = value;
+            get => elements[index];
+            set => elements[index] = value;
         }
 
         public virtual void Add(int element)
         {
             VerifyNumberOfElements();
-            Elements[Count] = element;
+            elements[Count] = element;
             Count++;
         }
 
@@ -36,7 +36,7 @@ namespace ArrayOperations
         {
             for (int i = 0; i < Count; i++)
             {
-                if (Elements[i] == element)
+                if (elements[i] == element)
                 {
                     return i;
                 }
@@ -50,13 +50,13 @@ namespace ArrayOperations
             VerifyNumberOfElements();
             ShiftRight(index);
 
-            Elements[index] = element;
+            elements[index] = element;
             Count++;
         }
 
         public void Clear()
         {
-            Array.Resize(ref Elements, 0);
+            Array.Resize(ref elements, 0);
             Count = 0;
         }
 
@@ -80,19 +80,19 @@ namespace ArrayOperations
         {
             const int doubleLength = 2;
 
-            if (Count != Elements.Length)
+            if (Count != elements.Length)
             {
                 return;
             }
 
-            Array.Resize(ref Elements, Elements.Length * doubleLength);
+            Array.Resize(ref elements, elements.Length * doubleLength);
         }
 
         private void ShiftLeft(int index)
         {
             for (int i = index; i < Count - 1; i++)
             {
-                Elements[i] = Elements[i + 1];
+                elements[i] = elements[i + 1];
             }
         }
 
@@ -100,7 +100,7 @@ namespace ArrayOperations
         {
             for (int i = Count - 1; i > index + 1; i--)
             {
-                Elements[i] = Elements[i - 1];
+                elements[i] = elements[i - 1];
             }
         }
     }
