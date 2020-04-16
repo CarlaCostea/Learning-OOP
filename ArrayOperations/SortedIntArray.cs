@@ -18,21 +18,36 @@
             {
                 if (this[i] > element)
                 {
-                    Insert(i, element);
+                    base.Insert(i, element);
                     return;
                 }
 
                 if (this[i] < element && element < this[i + 1])
                 {
-                    Insert(i + 1, element);
+                    base.Insert(i + 1, element);
                     return;
                 }
 
                 if (element > this[Count - 1])
                 {
-                    Insert(Count, element);
+                    base.Insert(Count, element);
                     return;
                 }
+            }
+        }
+
+        public override void Insert(int index, int element)
+        {
+            if (index == 0 && element <= this[0])
+            {
+                base.Insert(index, element);
+                return;
+            }
+
+            if (index == Count - 1 && element >= this[Count - 1])
+            {
+                base.Insert(index, element);
+                return;
             }
         }
     }
