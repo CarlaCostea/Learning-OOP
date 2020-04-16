@@ -12,7 +12,7 @@ namespace ArrayOperations
             Elements = new int[initialSize];
         }
 
-        public int Count { get; private set; }
+        public int Count { get; set; }
 
         public int this[int index]
         {
@@ -20,7 +20,7 @@ namespace ArrayOperations
             set => Elements[index] = value;
         }
 
-        public void Add(int element)
+        public virtual void Add(int element)
         {
             VerifyNumberOfElements();
             Elements[Count] = element;
@@ -76,6 +76,18 @@ namespace ArrayOperations
             Count--;
         }
 
+        public void VerifyNumberOfElements()
+        {
+            const int doubleLength = 2;
+
+            if (Count != Elements.Length)
+            {
+                return;
+            }
+
+            Array.Resize(ref Elements, Elements.Length * doubleLength);
+        }
+
         private void ShiftLeft(int index)
         {
             for (int i = index; i < Count - 1; i++)
@@ -90,18 +102,6 @@ namespace ArrayOperations
             {
                 Elements[i] = Elements[i - 1];
             }
-        }
-
-        private void VerifyNumberOfElements()
-            {
-            const int doubleLength = 2;
-
-            if (Count != Elements.Length)
-            {
-                return;
-            }
-
-            Array.Resize(ref Elements, Elements.Length * doubleLength);
         }
     }
 }

@@ -6,45 +6,43 @@
 
         public SortedIntArray()
         {
-            QuickSort(Elements, 0, Count);
-            this.SortedElements = Elements;
+            const int initialSize = 4;
+            SortedElements = new int[initialSize];
         }
 
-        private void QuickSort(int[] elements, int start, int end)
+        public override void Add(int element)
         {
-            int i;
-            if (start >= end)
+            if (Count == 0)
             {
-                return;
+                SortedElements[Count] = element;
             }
 
-            i = Partition(elements, start, end);
-
-            QuickSort(elements, start, i - 1);
-            QuickSort(elements, i + 1, end);
-        }
-
-        private int Partition(int[] elements, int start, int end)
-        {
-            int temp;
-            double p = elements[end];
-            int i = start - 1;
-
-            for (int j = start; j <= end - 1; j++)
+            if (Count == 1 && SortedElements[0] > element)
             {
-                if (elements[j] > p)
+                Insert(0, element);
+            }
+
+            if (Count == 1 && SortedElements[0] < element)
+            {
+                base.Add(element);
+            }
+
+            for (int i = 2; i < Count; i++)
+            {
+                if (SortedElements[i] > element)
                 {
-                    i++;
-                    temp = elements[i];
-                    elements[i] = elements[j];
-                    elements[j] = temp;
+                    Insert(i, element);
+                    return;
                 }
-            }
 
-            temp = elements[i + 1];
-            elements[i + 1] = elements[end];
-            elements[end] = temp;
-            return i + 1;
+                if (SortedElements[i] < element && element < SortedElements[i + 1])
+                {
+                    Insert(i + 1, element);
+                    return;
+                }
+
+                base.Add(element);
+            }
         }
     }
 }
