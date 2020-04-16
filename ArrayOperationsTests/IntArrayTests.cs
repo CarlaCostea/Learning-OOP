@@ -101,7 +101,7 @@ namespace ArrayOperationsTests
             Assert.Equal(5, intArray.Count);
             intArray.Insert(2, 10);
             Assert.Equal(2, intArray.IndexOf(10));
-            Assert.Equal(4, intArray[3]);
+            Assert.Equal(3, intArray[3]);
             Assert.Equal(6, intArray.Count);
         }
 

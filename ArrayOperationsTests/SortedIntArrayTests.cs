@@ -21,7 +21,13 @@ namespace ArrayOperationsTests
             intArray.Add(1);
             int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             Assert.Equal(test.Length, intArray.Count);
-            Assert.Equal(6, intArray[1]);
+            Assert.Equal(1, intArray[0]);
+            Assert.Equal(2, intArray[1]);
+            Assert.Equal(3, intArray[2]);
+            Assert.Equal(4, intArray[3]);
+            Assert.Equal(5, intArray[4]);
+            Assert.Equal(6, intArray[5]);
+            Assert.Equal(7, intArray[6]);
         }
     }
 }

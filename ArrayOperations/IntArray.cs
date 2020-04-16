@@ -48,10 +48,10 @@ namespace ArrayOperations
         public void Insert(int index, int element)
         {
             VerifyNumberOfElements();
+            Count++;
             ShiftRight(index);
 
             elements[index] = element;
-            Count++;
         }
 
         public void Clear()
@@ -98,7 +98,7 @@ namespace ArrayOperations
 
         private void ShiftRight(int index)
         {
-            for (int i = Count - 1; i > index + 1; i--)
+            for (int i = Count - 1; i > index; i--)
             {
                 elements[i] = elements[i - 1];
             }
