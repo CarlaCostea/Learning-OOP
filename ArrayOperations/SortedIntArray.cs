@@ -30,8 +30,8 @@
 
                 if (element > this[Count - 1])
                 {
-                    Count++;
-                    this[Count - 1] = element;
+                    Insert(Count, element);
+                    return;
                 }
             }
         }
