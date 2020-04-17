@@ -37,7 +37,7 @@
         }
 
         public override void Insert(int index, int element)
-        {
+            {
             if (index == 0 && element <= this[0])
             {
                 base.Insert(index, element);
@@ -49,6 +49,13 @@
                 base.Insert(index, element);
                 return;
             }
+
+            if (index <= 0 || index >= Count - 1 || this[index] < element)
+            {
+                return;
+            }
+
+            base.Insert(index, element);
         }
     }
 }

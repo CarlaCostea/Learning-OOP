@@ -45,7 +45,7 @@ namespace ArrayOperations
             return -1;
         }
 
-        public void Insert(int index, int element)
+        public virtual void Insert(int index, int element)
         {
             VerifyNumberOfElements();
             Count++;
