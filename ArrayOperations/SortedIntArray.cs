@@ -14,16 +14,14 @@
                 if (index == 0 && value <= this[0])
                 {
                     this[index] = value;
-                    return;
                 }
 
                 if (index == Count - 1 && value >= this[Count - 1])
                 {
                     this[index] = value;
-                    return;
                 }
 
-                if (index <= 0 || index >= Count - 1 || this[index] < value)
+                if (index <= 0 && index >= Count - 1 && this[index] <= value)
                 {
                     return;
                 }
