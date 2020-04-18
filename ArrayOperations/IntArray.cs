@@ -14,7 +14,7 @@ namespace ArrayOperations
 
         public int Count { get; set; }
 
-        public int this[int index]
+        public virtual int this[int index]
         {
             get => elements[index];
             set => elements[index] = value;
