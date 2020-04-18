@@ -11,17 +11,7 @@
             get => this[index];
             set
                 {
-                if (index == 0 && value <= this[0])
-                {
-                    this[index] = value;
-                }
-
-                if (index == Count - 1 && value >= this[Count - 1])
-                {
-                    this[index] = value;
-                }
-
-                if (index <= 0 && index >= Count - 1 && this[index] <= value)
+                if (GetPosition(value) != index)
                 {
                     return;
                 }
@@ -32,32 +22,7 @@
 
         public override void Add(int element)
         {
-            if (Count == 0)
-            {
-                this[0] = element;
-                Count++;
-            }
-
-            for (int i = 0; i < Count; i++)
-            {
-                if (this[i] > element)
-                {
-                    base.Insert(i, element);
-                    return;
-                }
-
-                if (this[i] < element && element < this[i + 1])
-                {
-                    base.Insert(i + 1, element);
-                    return;
-                }
-
-                if (element > this[Count - 1])
-                {
-                    base.Insert(Count, element);
-                    return;
-                }
-            }
+            base.Insert(GetPosition(element), element);
         }
 
         public override void Insert(int index, int element)
