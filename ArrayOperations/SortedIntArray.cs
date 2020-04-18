@@ -61,25 +61,26 @@
         }
 
         public override void Insert(int index, int element)
-            {
-            if (index == 0 && element <= this[0])
-            {
-                base.Insert(index, element);
-                return;
-            }
-
-            if (index == Count - 1 && element >= this[Count - 1])
-            {
-                base.Insert(index, element);
-                return;
-            }
-
-            if (index <= 0 || index >= Count - 1 || this[index] < element)
+        {
+            if (GetPosition(element) != index)
             {
                 return;
             }
 
             base.Insert(index, element);
+        }
+
+        private int GetPosition(int element)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (element < this[i])
+                {
+                    return i;
+                }
+            }
+
+            return Count;
         }
     }
 }
