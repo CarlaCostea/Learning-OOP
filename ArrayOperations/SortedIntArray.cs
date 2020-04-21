@@ -8,7 +8,6 @@
 
         public override int this[int index]
         {
-            get => this[index];
             set
                 {
                 if (GetPosition(value) != index)
