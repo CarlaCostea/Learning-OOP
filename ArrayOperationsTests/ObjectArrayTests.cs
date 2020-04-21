@@ -59,6 +59,8 @@ namespace ArrayOperationsTests
             Assert.Equal(-1, objectArray.IndexOf(2));
             objectArray.RemoveAt(0);
             Assert.Equal(0, objectArray.IndexOf(1));
+            objectArray.Clear();
+            Assert.Equal(0, objectArray.Count);
         }
     }
 }
