@@ -38,8 +38,8 @@ namespace ArrayOperations
         {
             for (int i = 0; i < Count; i++)
             {
-                if (elements[i] == element)
-                {
+                if (object.Equals(elements[i], element))
+                    {
                     return i;
                 }
             }

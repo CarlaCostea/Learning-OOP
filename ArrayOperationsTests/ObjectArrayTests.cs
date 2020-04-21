@@ -9,18 +9,34 @@ namespace ArrayOperationsTests
     public class ObjectArrayTests
     {
         [Fact]
-        public void AddObjecyToArray()
+        public void AddObjectToArray()
         {
-            ObjectArray intArray = new ObjectArray();
-            intArray.Add(1);
-            intArray.Add(2);
-            intArray.Add(3);
-            intArray.Add(4);
-            intArray.Add(5);
-            intArray.Add(6);
-            intArray.Add(7);
+            ObjectArray objectArray = new ObjectArray();
+            objectArray.Add(1);
+            objectArray.Add(2);
+            objectArray.Add(3);
+            objectArray.Add(4);
+            objectArray.Add(5);
+            objectArray.Add(6);
+            objectArray.Add(7);
             int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
-            Assert.Equal(test.Length, intArray.Count);
+            Assert.Equal(test.Length, objectArray.Count);
+        }
+
+        [Fact]
+        public void TestContainsMethod()
+        {
+            ObjectArray objectArray = new ObjectArray();
+            objectArray.Add(1);
+            objectArray.Add(2);
+            objectArray.Add(3);
+            objectArray.Add(4);
+            objectArray.Add(5);
+            objectArray.Add(6);
+            objectArray.Add(7);
+            int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            Assert.Equal(test.Length, objectArray.Count);
+            Assert.True(objectArray.Contains(2));
         }
     }
 }
