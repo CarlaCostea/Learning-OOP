@@ -78,7 +78,7 @@ namespace ArrayOperations
             Count--;
         }
 
-        public void VerifyNumberOfElements()
+        private void VerifyNumberOfElements()
         {
             const int doubleLength = 2;
 
