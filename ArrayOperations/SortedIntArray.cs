@@ -8,14 +8,16 @@
 
         public override int this[int index]
         {
+            get => base[index];
+
             set
-                {
+            {
                 if (GetPosition(value) != index)
                 {
                     return;
                 }
 
-                this[index] = value;
+                base[index] = value;
             }
         }
 
