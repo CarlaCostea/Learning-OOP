@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ArrayOperations
 {
-    public class ObjectArray
+    public class ObjectArray : IEnumerable
     {
         private object[] elements;
 
@@ -54,6 +55,11 @@ namespace ArrayOperations
             ShiftRight(index);
 
             elements[index] = element;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return elements.GetEnumerator();
         }
 
         public void Clear()
