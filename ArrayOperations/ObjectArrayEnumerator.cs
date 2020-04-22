@@ -7,12 +7,11 @@ namespace ArrayOperations
 {
     public class ObjectArrayEnumerator : IEnumerator
     {
-        private readonly object[] elements;
+        readonly ObjectArray elements = new ObjectArray();
         int position = -1;
 
-        public ObjectArrayEnumerator(object[] newElements)
+        public ObjectArrayEnumerator()
         {
-            elements = newElements;
         }
 
         public object Current => this;
@@ -20,7 +19,7 @@ namespace ArrayOperations
         public bool MoveNext()
         {
             position++;
-            return position < elements.Length;
+            return position < elements.Count;
         }
 
         public void Reset()

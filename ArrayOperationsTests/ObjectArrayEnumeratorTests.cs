@@ -12,7 +12,14 @@ namespace ArrayOperationsTests
 
         public void TestIenumerator()
         {
-            ObjectArrayEnumerator objectArray = new ObjectArrayEnumerator {1, 2};
+            ObjectArray objectArray = new ObjectArray();
+            objectArray.Add(1);
+            objectArray.Add(2);
+            var arrayEnumerator = objectArray.GetEnumerator();
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal(1, arrayEnumerator.Current);
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal(2, arrayEnumerator.Current);
 
 
         }

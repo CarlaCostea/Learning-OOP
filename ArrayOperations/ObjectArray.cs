@@ -9,19 +9,10 @@ namespace ArrayOperations
     {
         private object[] elements;
 
-        public ObjectArray(object[] newElements)
+        public ObjectArray()
         {
-            if (newElements == null)
-            {
-                return;
-            }
-
-            elements = new object[newElements.Length];
-
-            for (int i = 0; i < newElements.Length; i++)
-            {
-                elements[i] = newElements[i];
-            }
+            const int initialSize = 4;
+            elements = new object[initialSize];
         }
 
         public int Count { get; set; }
