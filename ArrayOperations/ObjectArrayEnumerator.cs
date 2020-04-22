@@ -5,13 +5,14 @@ using System.Text;
 
 namespace ArrayOperations
 {
-    internal class ObjectArrayEnumerator : IEnumerator
+    public class ObjectArrayEnumerator : IEnumerator
     {
-        readonly ObjectArray elements = new ObjectArray();
+        private readonly object[] elements;
         int position = -1;
 
-        public ObjectArrayEnumerator()
+        public ObjectArrayEnumerator(object[] newElements)
         {
+            elements = newElements;
         }
 
         public object Current => this;
@@ -19,7 +20,7 @@ namespace ArrayOperations
         public bool MoveNext()
         {
             position++;
-            return position < elements.Count;
+            return position < elements.Length;
         }
 
         public void Reset()
