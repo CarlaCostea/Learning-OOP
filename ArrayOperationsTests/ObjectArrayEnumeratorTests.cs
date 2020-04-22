@@ -12,16 +12,8 @@ namespace ArrayOperationsTests
 
         public void TestIenumerator()
         {
-            ObjectArrayEnumerator objectArray = new ObjectArrayEnumerator();
-            objectArray.Add(1);
-            objectArray.Add(2);
-            objectArray.Add(3);
-            objectArray.Add(4);
-            objectArray.Add(5);
-            objectArray.Add(6);
-            objectArray.Add(7);
-            int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
-            Assert.Equal(test.Length, objectArray.Count);
+            ObjectArrayEnumerator objectArray = new ObjectArrayEnumerator {1, 2};
+
 
         }
     }
