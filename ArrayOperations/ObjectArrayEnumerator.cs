@@ -5,18 +5,28 @@ using System.Text;
 
 namespace ArrayOperations
 {
-    class ObjectArrayEnumerator : IEnumerator
+    internal class ObjectArrayEnumerator : IEnumerator
     {
-        public object Current => throw new NotImplementedException();
+        private readonly object[] elements;
+        int position = -1;
+
+        public ObjectArrayEnumerator()
+        {
+            const int initialSize = 4;
+            elements = new object[initialSize];
+        }
+
+        public object Current => this;
 
         public bool MoveNext()
         {
-            throw new NotImplementedException();
+            position++;
+            return position < elements.Length;
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            position = -1;
         }
     }
 }
