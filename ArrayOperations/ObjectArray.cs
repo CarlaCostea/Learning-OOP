@@ -7,7 +7,7 @@ namespace ArrayOperations
 {
     public class ObjectArray : IEnumerable
     {
-        private object[] elements;
+        public object[] elements;
 
         public ObjectArray()
         {
@@ -59,7 +59,7 @@ namespace ArrayOperations
 
         public IEnumerator GetEnumerator()
         {
-            return new ObjectArrayEnumerator();
+            return new ObjectArrayEnumerator(elements);
         }
 
         public void Clear()
