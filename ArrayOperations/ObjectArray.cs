@@ -59,7 +59,7 @@ namespace ArrayOperations
 
         public IEnumerator GetEnumerator()
         {
-            return new ObjectArrayEnumerator(elements, Count);
+            return new ObjectArrayEnumerator(this);
         }
 
         public void Clear()

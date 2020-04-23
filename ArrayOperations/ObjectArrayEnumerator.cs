@@ -7,22 +7,20 @@ namespace ArrayOperations
 {
     public class ObjectArrayEnumerator : IEnumerator
     {
-        private readonly object[] elements;
-        private readonly int count;
+        private readonly ObjectArray objectArray;
         int position = -1;
 
-        public ObjectArrayEnumerator(object[] elements, int count)
+        public ObjectArrayEnumerator(ObjectArray objectArray)
         {
-            this.elements = elements;
-            this.count = count;
+            this.objectArray = objectArray;
         }
 
-        public object Current => elements[position];
+        public object Current => objectArray[position];
 
         public bool MoveNext()
         {
             position++;
-            return position < count;
+            return position < objectArray.Count;
         }
 
         public void Reset()
