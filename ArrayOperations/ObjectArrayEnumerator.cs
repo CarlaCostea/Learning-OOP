@@ -7,7 +7,6 @@ namespace ArrayOperations
 {
     public class ObjectArrayEnumerator : IEnumerator
     {
-        readonly ObjectArray elements = new ObjectArray();
         int position = -1;
 
         public ObjectArrayEnumerator()
