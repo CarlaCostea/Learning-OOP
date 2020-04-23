@@ -7,17 +7,17 @@ namespace ArrayOperations
 {
     public class ObjectArrayEnumerator : IEnumerator
     {
-        private readonly object elements;
-        readonly int count;
+        private readonly object[] elements;
+        private readonly int count;
         int position = -1;
 
-        public ObjectArrayEnumerator(object[] newElements)
+        public ObjectArrayEnumerator(object[] elements, int count)
         {
-            count++;
-            this.elements = newElements;
+            this.elements = elements;
+            this.count = count;
         }
 
-        public object Current => this;
+        public object Current => elements[position];
 
         public bool MoveNext()
         {
