@@ -20,7 +20,7 @@ namespace ArrayOperationsTests
             Assert.Equal(1, arrayEnumerator.Current);
             Assert.True(arrayEnumerator.MoveNext());
             Assert.Equal(2, arrayEnumerator.Current);
-
+            Assert.False(arrayEnumerator.MoveNext());
 
         }
     }
