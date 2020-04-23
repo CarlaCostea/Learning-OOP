@@ -7,7 +7,7 @@ namespace ArrayOperations
 {
     public class ObjectArray : IEnumerable
     {
-        public object[] elements;
+        private object[] elements;
 
         public ObjectArray()
         {
