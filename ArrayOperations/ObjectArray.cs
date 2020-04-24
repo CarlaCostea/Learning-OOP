@@ -24,17 +24,16 @@ namespace ArrayOperations
         }
 
         public IEnumerable ImplementEnumerator()
-        {
-            int position = 0;
-            foreach (var element in elements)
+                {
+            int position = -1;
+            if (position == Count)
+            {
+                yield break;
+            }
+            else
             {
                 position++;
-                yield return element;
-
-                if (position == Count)
-                {
-                    yield break;
-                }
+                yield return this[position];
             }
         }
 
