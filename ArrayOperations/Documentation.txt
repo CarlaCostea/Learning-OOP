@@ -1,0 +1,19 @@
+Șir de numere întregi:
+
+https://juniormind.com/content/dump/intarray.html
+
+Proprietati:
+
+https://juniormind.com/content/dump/properties.html
+
+Mostenirea:
+
+https://juniormind.com/content/dump/inheritance.html
+
+Interfata IEnumerable:
+
+https://juniormind.com/content/dump/ienumerable.html
+
+Tipuri generice:
+
+https://juniormind.com/content/dump/generics.html
