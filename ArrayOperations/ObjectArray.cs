@@ -23,6 +23,21 @@ namespace ArrayOperations
             set => elements[index] = value;
         }
 
+        public IEnumerable ImplementEnumerator()
+        {
+            int position = 0;
+            foreach (var element in elements)
+            {
+                position++;
+                yield return element;
+
+                if (position == Count)
+                {
+                    yield break;
+                }
+            }
+        }
+
         public virtual void Add(object element)
         {
             VerifyNumberOfElements();
