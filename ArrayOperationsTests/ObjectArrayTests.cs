@@ -71,8 +71,7 @@ namespace ArrayOperationsTests
             objectArray.Add(2);
             objectArray.Add(3);
 
-            int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
-            Assert.Equal(test.Length, objectArray.Count);
+            Assert.Equal(3, objectArray.Count);
 
             Assert.True(objectArray.Contains(2));
 

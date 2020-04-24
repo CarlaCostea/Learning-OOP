@@ -77,6 +77,11 @@ namespace ArrayOperations
             return new ObjectArrayEnumerator(this);
         }
 
+        public IEnumerator GetEnumeratorYield()
+        {
+            yield return ImplementEnumerator();
+        }
+
         public void Clear()
         {
             Array.Resize(ref elements, 0);
