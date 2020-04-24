@@ -62,5 +62,28 @@ namespace ArrayOperationsTests
             objectArray.Clear();
             Assert.Equal(0, objectArray.Count);
         }
+
+        [Fact]
+        public void TestEnumerator()
+        {
+            ObjectArray objectArray = new ObjectArray();
+            objectArray.Add(1);
+            objectArray.Add(2);
+            objectArray.Add(3);
+
+            int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+            Assert.Equal(test.Length, objectArray.Count);
+
+            Assert.True(objectArray.Contains(2));
+
+            var arrayEnumerator = objectArray.GetEnumeratorYield();
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal(1, arrayEnumerator.Current);
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal(2, arrayEnumerator.Current);
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal(3, arrayEnumerator.Current);
+            Assert.False(arrayEnumerator.MoveNext());
+        }
     }
 }
