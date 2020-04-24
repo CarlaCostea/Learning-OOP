@@ -75,7 +75,7 @@ namespace ArrayOperationsTests
 
             Assert.True(objectArray.Contains(2));
 
-            var arrayEnumerator = objectArray.GetEnumeratorYield();
+            var arrayEnumerator = objectArray.GetEnumerator();
             Assert.True(arrayEnumerator.MoveNext());
             Assert.Equal(1, arrayEnumerator.Current);
             Assert.True(arrayEnumerator.MoveNext());

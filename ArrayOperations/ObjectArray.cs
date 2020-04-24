@@ -71,12 +71,12 @@ namespace ArrayOperations
             elements[index] = element;
         }
 
-        public IEnumerator GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            return new ObjectArrayEnumerator(this);
+            return GetEnumerator();
         }
 
-        public IEnumerator GetEnumeratorYield()
+        public IEnumerator GetEnumerator()
         {
             yield return ImplementEnumerator();
         }
