@@ -65,12 +65,10 @@ namespace ArrayOperations
             elements[index] = element;
         }
 
-        /* Use this for class ObjectArrayEnumerator:
-
-        public IEnumerator GetEnumerator(){
+        public IEnumerator GetEnumeratorForExternalClass()
+        {
             return new ObjectArrayEnumerator(this);
         }
-    */
 
         IEnumerator IEnumerable.GetEnumerator()
         {

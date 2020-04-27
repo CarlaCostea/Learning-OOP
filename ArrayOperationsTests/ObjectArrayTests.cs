@@ -92,5 +92,66 @@ namespace ArrayOperationsTests
             Assert.Equal(3, arrayEnumerator.Current);
             Assert.False(arrayEnumerator.MoveNext());
         }
+
+        [Fact]
+        public void MoveNextShouldReturnTrueIfWeHaveAvailableElements()
+        {
+            ObjectArray objectArray = new ObjectArray { "first", "second", "last" };
+
+            Assert.Equal(3, objectArray.Count);
+
+            Assert.True(objectArray.Contains("second"));
+
+            var arrayEnumerator = objectArray.GetEnumerator();
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal("first", arrayEnumerator.Current);
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal("second", arrayEnumerator.Current);
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal("last", arrayEnumerator.Current);
+            Assert.False(arrayEnumerator.MoveNext());
+        }
+
+        [Fact]
+        public void MoveNextShouldReturnFalseIfWeDontHaveAvailableElements()
+        {
+            ObjectArray objectArray = new ObjectArray { "first", "second", "last" };
+
+            Assert.Equal(3, objectArray.Count);
+
+            Assert.True(objectArray.Contains("second"));
+
+            var arrayEnumerator = objectArray.GetEnumerator();
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal("first", arrayEnumerator.Current);
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal("second", arrayEnumerator.Current);
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal("last", arrayEnumerator.Current);
+            Assert.False(arrayEnumerator.MoveNext());
+            Assert.False(arrayEnumerator.MoveNext());
+        }
+
+        [Fact]
+        public void ResetShouldMoveTheEnumeratorAtTheBeginning()
+        {
+            ObjectArray objectArray = new ObjectArray { "first", "second", "last" };
+
+            Assert.Equal(3, objectArray.Count);
+
+            Assert.True(objectArray.Contains("second"));
+
+            var arrayEnumerator = objectArray.GetEnumerator();
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal("first", arrayEnumerator.Current);
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal("second", arrayEnumerator.Current);
+            Assert.True(arrayEnumerator.MoveNext());
+            Assert.Equal("last", arrayEnumerator.Current);
+            arrayEnumerator.Reset();
+            Assert.False(arrayEnumerator.MoveNext());
+            Assert.Equal("first", arrayEnumerator.Current);
+            Assert.False(arrayEnumerator.MoveNext());
+        }
     }
 }

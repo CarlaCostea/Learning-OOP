@@ -17,7 +17,7 @@ namespace ArrayOperationsTests
                 1,
                 2
             };
-            var arrayEnumerator = objectArray.GetEnumerator();
+            var arrayEnumerator = objectArray.GetEnumeratorForExternalClass();
             Assert.True(arrayEnumerator.MoveNext());
             Assert.Equal(1, arrayEnumerator.Current);
             Assert.True(arrayEnumerator.MoveNext());
