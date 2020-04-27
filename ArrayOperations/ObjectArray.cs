@@ -23,17 +23,11 @@ namespace ArrayOperations
             set => elements[index] = value;
         }
 
-        public IEnumerable ImplementEnumerator()
-                {
-            int position = -1;
-            if (position == Count)
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
             {
-                yield break;
-            }
-            else
-            {
-                position++;
-                yield return this[position];
+                yield return elements[i];
             }
         }
 
@@ -71,14 +65,16 @@ namespace ArrayOperations
             elements[index] = element;
         }
 
+        /* Use this for class ObjectArrayEnumerator:
+
+        public IEnumerator GetEnumerator(){
+            return new ObjectArrayEnumerator(this);
+        }
+    */
+
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            yield return ImplementEnumerator();
+            yield return GetEnumerator();
         }
 
         public void Clear()

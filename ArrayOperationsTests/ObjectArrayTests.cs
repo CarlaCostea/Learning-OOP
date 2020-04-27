@@ -11,14 +11,16 @@ namespace ArrayOperationsTests
         [Fact]
         public void AddObjectToArray()
         {
-            ObjectArray objectArray = new ObjectArray();
-            objectArray.Add(1);
-            objectArray.Add(2);
-            objectArray.Add(3);
-            objectArray.Add(4);
-            objectArray.Add(5);
-            objectArray.Add(6);
-            objectArray.Add(7);
+            ObjectArray objectArray = new ObjectArray
+            {
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            };
             int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             Assert.Equal(test.Length, objectArray.Count);
         }
@@ -26,14 +28,16 @@ namespace ArrayOperationsTests
         [Fact]
         public void TestContainsMethod()
         {
-            ObjectArray objectArray = new ObjectArray();
-            objectArray.Add(1);
-            objectArray.Add(2);
-            objectArray.Add(3);
-            objectArray.Add(4);
-            objectArray.Add(5);
-            objectArray.Add(6);
-            objectArray.Add(7);
+            ObjectArray objectArray = new ObjectArray
+            {
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            };
             int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             Assert.Equal(test.Length, objectArray.Count);
             Assert.True(objectArray.Contains(2));
@@ -42,14 +46,16 @@ namespace ArrayOperationsTests
         [Fact]
         public void TestAllMethods()
         {
-            ObjectArray objectArray = new ObjectArray();
-            objectArray.Add(1);
-            objectArray.Add(2);
-            objectArray.Add(3);
-            objectArray.Add(4);
-            objectArray.Add(5);
-            objectArray.Add(6);
-            objectArray.Add(7);
+            ObjectArray objectArray = new ObjectArray
+            {
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            };
             int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             Assert.Equal(test.Length, objectArray.Count);
             Assert.True(objectArray.Contains(2));
@@ -66,10 +72,12 @@ namespace ArrayOperationsTests
         [Fact]
         public void TestEnumerator()
         {
-            ObjectArray objectArray = new ObjectArray();
-            objectArray.Add(1);
-            objectArray.Add(2);
-            objectArray.Add(3);
+            ObjectArray objectArray = new ObjectArray
+            {
+                1,
+                2,
+                3
+            };
 
             Assert.Equal(3, objectArray.Count);
 
