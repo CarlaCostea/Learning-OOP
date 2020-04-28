@@ -48,7 +48,7 @@ namespace ArrayOperationsTests
             Assert.Equal(1, charArray.IndexOf('b'));
             var enumerate = charArray.GetEnumerator();
             Assert.True(enumerate.MoveNext());
-            Assert.Equal(1, enumerate.Current);
+            Assert.Equal('a', enumerate.Current);
         }
     }
 }
