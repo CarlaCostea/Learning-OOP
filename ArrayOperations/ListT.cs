@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ArrayOperations
 {
-    class ListT<T> : IEnumerable<T>
+    public class ListT<T> : IEnumerable<T>
     {
         private T[] elements;
 
