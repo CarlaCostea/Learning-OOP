@@ -77,19 +77,15 @@ namespace ArrayOperations
             Count = 0;
         }
 
-        public void Remove(T element)
-        {
-            if (IndexOf(element) == -1)
+        public bool Remove(T item)
             {
-                return;
+            if (IndexOf(item) == -1)
+            {
+                return false;
             }
 
-            RemoveAt(IndexOf(element));
-        }
-
-        bool ICollection<T>.Remove(T item)
-        {
-            return ((IList<T>)elements).Remove(item);
+            RemoveAt(IndexOf(item));
+            return true;
         }
 
         public void RemoveAt(int index)
