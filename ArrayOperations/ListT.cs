@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ArrayOperations
 {
-    public class ListT<T> : IEnumerable<T>
+    public class ListT<T> : IList<T>
     {
         private T[] elements;
 
@@ -16,6 +15,8 @@ namespace ArrayOperations
         }
 
         public int Count { get; set; }
+
+        public bool IsReadOnly => ((IList<T>)elements).IsReadOnly;
 
         public virtual T this[int index]
         {
@@ -31,23 +32,23 @@ namespace ArrayOperations
             }
         }
 
-        public virtual void Add(T element)
+        public virtual void Add(T item)
         {
             VerifyNumberOfElements();
-            elements[Count] = element;
+            elements[Count] = item;
             Count++;
         }
 
-        public bool Contains(T element)
+        public bool Contains(T item)
         {
-            return IndexOf(element) != -1;
+            return IndexOf(item) != -1;
         }
 
-        public int IndexOf(T element)
+        public int IndexOf(T item)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (object.Equals(elements[i], element))
+                if (object.Equals(elements[i], item))
                 {
                     return i;
                 }
@@ -56,13 +57,13 @@ namespace ArrayOperations
             return -1;
         }
 
-        public virtual void Insert(int index, T element)
+        public virtual void Insert(int index, T item)
         {
             VerifyNumberOfElements();
             Count++;
             ShiftRight(index);
 
-            elements[index] = element;
+            elements[index] = item;
         }
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
@@ -86,10 +87,20 @@ namespace ArrayOperations
             RemoveAt(IndexOf(element));
         }
 
+        bool ICollection<T>.Remove(T item)
+        {
+            return ((IList<T>)elements).Remove(item);
+        }
+
         public void RemoveAt(int index)
         {
             ShiftLeft(index);
             Count--;
+        }
+
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            ((IList<T>)elements).CopyTo(array, arrayIndex);
         }
 
         private void VerifyNumberOfElements()

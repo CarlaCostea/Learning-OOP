@@ -24,19 +24,19 @@ namespace ArrayOperations
             }
         }
 
-        public override void Add(T element)
+        public override void Add(T item)
         {
-            base.Insert(GetPosition(element), element);
+            base.Insert(GetPosition(item), item);
         }
 
-        public override void Insert(int index, T element)
+        public override void Insert(int index, T item)
         {
-            if (GetPosition(element) != index)
+            if (GetPosition(item) != index)
             {
                 return;
             }
 
-            base.Insert(index, element);
+            base.Insert(index, item);
         }
 
         private int GetPosition(T element)
