@@ -65,5 +65,17 @@ namespace ArrayOperationsTests
             Assert.Equal("red", enumerate.Current);
             Assert.Equal(4, stringArray.Count);
         }
+
+        [Fact]
+        public void CopyElements()
+        {
+            var stringArray = new ListT<string>() { "red", "red", "blue", "black" };
+            stringArray.Add("green");
+            string[] clone = new string[8];
+            stringArray.CopyTo(clone, 0);
+            Assert.Equal(stringArray[0], clone[0]);
+            Assert.Equal(stringArray[1], clone[1]);
+            Assert.Equal(stringArray[2], clone[2]);
+        }
     }
 }
