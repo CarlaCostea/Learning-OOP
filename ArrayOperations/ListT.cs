@@ -96,7 +96,14 @@ namespace ArrayOperations
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            ((IList<T>)elements).CopyTo(array, arrayIndex);
+            try
+            {
+                ((IList<T>)elements).CopyTo(array, arrayIndex);
+            }
+            catch
+            {
+                throw new InvalidOperationException("Cannot copy elements in a smaller array");
+            }
         }
 
         private void VerifyNumberOfElements()

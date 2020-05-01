@@ -119,17 +119,24 @@ namespace ArrayOperationsTests
         }
 
         [Fact]
-        public void RemoveFirstOccurenceOfElement()
+        public void RemoveFirstOccurenceOfElementAndValidateTheRemainingElements()
         {
             IntArray intArray = new IntArray();
             intArray.Add(1);
             intArray.Add(2);
             intArray.Add(3);
-            intArray.Add(4);
+            intArray.Add(2);
             intArray.Add(5);
+            intArray.Add(2);
+
+            Assert.Equal(1, intArray.IndexOf(2));
+
             intArray.Remove(2);
-            Assert.Equal(4, intArray.Count);
-            Assert.Equal(-1, intArray.IndexOf(2));
+            
+            Assert.Equal(5, intArray.Count);
+            Assert.True(intArray[1] == 3);
+            Assert.True(intArray[2] == 2);
+            Assert.True(intArray[4] == 2);
         }
 
         [Fact]
