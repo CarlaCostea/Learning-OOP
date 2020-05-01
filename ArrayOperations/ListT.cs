@@ -16,12 +16,20 @@ namespace ArrayOperations
 
         public int Count { get; set; }
 
-        public bool IsReadOnly => ((IList<T>)elements).IsReadOnly;
+        public bool IsReadOnly { get; set; }
 
         public virtual T this[int index]
         {
             get => elements[index];
-            set => elements[index] = value;
+            set
+            {
+                if (IsReadOnly)
+                {
+                    throw new NotSupportedException("List is ReadOnly");
+                }
+
+                elements[index] = value;
+                    }
         }
 
         public IEnumerator GetEnumerator()

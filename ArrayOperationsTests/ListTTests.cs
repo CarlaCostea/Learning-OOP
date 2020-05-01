@@ -88,5 +88,14 @@ namespace ArrayOperationsTests
             string[] clone = new string[3];
             Assert.Throws<InvalidOperationException>(() => stringArray.CopyTo(clone, 0));
         }
+
+
+        [Fact]
+        public void SetElementsOnAReadOnlyListShouldTrowAnError()
+        {
+            var stringArray = new ListT<string>() { "red", "red", "blue", "black" };
+            stringArray.IsReadOnly = true;
+            Assert.Throws<NotSupportedException>(() => stringArray[0] = "white");
+        }
     }
 }
