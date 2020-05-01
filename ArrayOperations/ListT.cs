@@ -67,6 +67,11 @@ namespace ArrayOperations
 
         public virtual void Insert(int index, T item)
         {
+            if (index < 0 && index >= Count)
+            {
+                throw new InvalidOperationException("Specified index isn't valid");
+            }
+
             VerifyNumberOfElements();
             Count++;
             ShiftRight(index);
@@ -98,6 +103,11 @@ namespace ArrayOperations
 
         public void RemoveAt(int index)
         {
+            if (index < 0 && index >= Count)
+            {
+                throw new InvalidOperationException("No element was found at specified index");
+            }
+
             ShiftLeft(index);
             Count--;
         }
