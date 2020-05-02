@@ -106,5 +106,24 @@ namespace ArrayOperationsTests
             stringArray.RemoveAllElementsWithGivenValue("red");
             Assert.True(stringArray.IndexOf("red") == -1);
         }
+
+        [Fact]
+        public void RemoveAllElementsWithGivenValueIfListIsNotReadonlySecondExample()
+        {
+            var stringArray = new ListT<string>() { "red", "red", "red" };
+            Assert.Equal(3, stringArray.Count);
+            stringArray.RemoveAllElementsWithGivenValue("red");
+            Assert.True(stringArray.IndexOf("red") == -1);
+        }
+
+        [Fact]
+        public void RemoveAllElementsWithGivenValueIfListIsReadonly()
+        {
+            var stringArray = new ListT<string>() { "red", "red", "red" };
+            stringArray.IsReadOnly = true;
+            Assert.Equal(3, stringArray.Count);
+            Assert.Throws<NotSupportedException>(() => stringArray.RemoveAllElementsWithGivenValue("red"));
+            Assert.False(stringArray.IndexOf("red") == -1);
+        }
     }
 }

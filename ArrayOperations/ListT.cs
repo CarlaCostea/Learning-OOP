@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace ArrayOperations
 {
     public class ListT<T> : IList<T>
+        where T : IComparable<T>
     {
         private T[] elements;
 
@@ -151,11 +152,16 @@ namespace ArrayOperations
                 throw new NotSupportedException();
             }
 
-            for (int i = 0; i < Count; i++)
+            int i = 0;
+            while (i < Count)
             {
-                if (object.Equals(elements[i], value))
+                if (value.CompareTo(elements[i]) == 0)
                 {
                     RemoveAt(i);
+                }
+                else
+                {
+                    i++;
                 }
             }
         }
