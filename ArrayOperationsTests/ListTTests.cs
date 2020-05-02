@@ -97,5 +97,14 @@ namespace ArrayOperationsTests
             stringArray.IsReadOnly = true;
             Assert.Throws<NotSupportedException>(() => stringArray[0] = "white");
         }
+
+        [Fact]
+        public void RemoveAllElementsWithGivenValueIfListIsNotReadonly()
+        {
+            var stringArray = new ListT<string>() { "red", "red", "blue", "black", "blue", "red" };
+            Assert.Equal(6, stringArray.Count);
+            stringArray.RemoveAllElementsWithGivenValue("red");
+            Assert.True(stringArray.IndexOf("red") == -1);
+        }
     }
 }
