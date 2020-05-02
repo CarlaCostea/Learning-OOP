@@ -86,7 +86,7 @@ namespace ArrayOperationsTests
             var stringArray = new ListT<string>() { "red", "red", "blue", "black" };
             stringArray.Add("green");
             string[] clone = new string[3];
-            Assert.Throws<InvalidOperationException>(() => stringArray.CopyTo(clone, 0));
+            Assert.Throws<ArgumentException>(() => stringArray.CopyTo(clone, 0));
         }
 
 

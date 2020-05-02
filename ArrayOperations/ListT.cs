@@ -42,6 +42,11 @@ namespace ArrayOperations
 
         public virtual void Add(T item)
         {
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("List is ReadOnly");
+            }
+
             VerifyNumberOfElements();
             elements[Count] = item;
             Count++;
@@ -86,12 +91,22 @@ namespace ArrayOperations
 
         public void Clear()
         {
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("List is ReadOnly");
+            }
+
             Array.Resize(ref elements, 0);
             Count = 0;
         }
 
         public bool Remove(T item)
             {
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException();
+            }
+
             if (IndexOf(item) == -1)
             {
                 return false;
@@ -103,7 +118,7 @@ namespace ArrayOperations
 
         public void RemoveAt(int index)
         {
-            if (index < 0 && index >= Count)
+            if (IsReadOnly || index < 0 && index >= Count)
             {
                 throw new InvalidOperationException("No element was found at specified index");
             }
@@ -114,13 +129,34 @@ namespace ArrayOperations
 
         public void CopyTo(T[] array, int arrayIndex)
         {
+            if (array == null)
+            {
+                throw new ArgumentException("Array Cannot be null");
+            }
+
             try
             {
                 ((IList<T>)elements).CopyTo(array, arrayIndex);
             }
             catch
             {
-                throw new InvalidOperationException("Cannot copy elements in a smaller array");
+                throw new ArgumentException("Cannot copy elements in a smaller array");
+            }
+        }
+
+        public void RemoveAllElementsWithGivenValue(T value)
+        {
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException();
+            }
+
+            for (int i = 0; i < Count; i++)
+            {
+                if (object.Equals(elements[i], value))
+                {
+                    RemoveAt(i);
+                }
             }
         }
 
