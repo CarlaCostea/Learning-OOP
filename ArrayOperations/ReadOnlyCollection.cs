@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Text;
 
 namespace ArrayOperations
 {
     public class ReadOnlyCollection<T> : ListT<T>
     {
-        public ReadOnlyCollection(ListT<T> elements)
+        public ReadOnlyCollection()
         {
-            _ = elements.ToImmutableList();
+        }
+
+        public IList<T> ReadOnlyList
+        {
+            get => this;
         }
     }
 }
