@@ -6,6 +6,7 @@ namespace ArrayOperations
 {
     public class ListT<T> : IList<T>
     {
+        const string IsReadOnlyError = "List is ReadOnly";
         private T[] elements;
 
         public ListT()
@@ -16,7 +17,7 @@ namespace ArrayOperations
 
         public int Count { get; set; }
 
-        public bool IsReadOnly { get; set; }
+        public bool IsReadOnly { get; }
 
         public virtual T this[int index]
         {
@@ -25,7 +26,12 @@ namespace ArrayOperations
             {
                 if (IsReadOnly)
                 {
-                    throw new NotSupportedException("List is ReadOnly");
+                    throw new NotSupportedException(IsReadOnlyError);
+                }
+
+                if (index < 0 && index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index should be inside the array boundaries");
                 }
 
                 elements[index] = value;
@@ -44,7 +50,7 @@ namespace ArrayOperations
         {
             if (IsReadOnly)
             {
-                throw new NotSupportedException("List is ReadOnly");
+                throw new NotSupportedException(IsReadOnlyError);
             }
 
             VerifyNumberOfElements();
@@ -74,7 +80,7 @@ namespace ArrayOperations
         {
             if (index < 0 && index >= Count)
             {
-                throw new InvalidOperationException("Specified index isn't valid");
+                throw new ArgumentOutOfRangeException(nameof(index), "Index should be inside the array boundaries");
             }
 
             VerifyNumberOfElements();
@@ -93,7 +99,7 @@ namespace ArrayOperations
         {
             if (IsReadOnly)
             {
-                throw new NotSupportedException("List is ReadOnly");
+                throw new NotSupportedException(IsReadOnlyError);
             }
 
             Array.Resize(ref elements, 0);
@@ -104,7 +110,7 @@ namespace ArrayOperations
             {
             if (IsReadOnly)
             {
-                throw new NotSupportedException();
+                throw new NotSupportedException(IsReadOnlyError);
             }
 
             if (IndexOf(item) == -1)
@@ -118,9 +124,14 @@ namespace ArrayOperations
 
         public void RemoveAt(int index)
         {
-            if (IsReadOnly || index < 0 && index >= Count)
+            if (IsReadOnly)
             {
-                throw new InvalidOperationException("No element was found at specified index");
+                throw new NotSupportedException(IsReadOnlyError);
+            }
+
+            if (index < 0 && index >= Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index should be inside the array boundaries");
             }
 
             ShiftLeft(index);
@@ -128,20 +139,23 @@ namespace ArrayOperations
         }
 
         public void CopyTo(T[] array, int arrayIndex)
-        {
+            {
             if (array == null)
             {
                 throw new ArgumentException("Array Cannot be null");
             }
 
-            try
+            if (arrayIndex < 0)
             {
-                ((IList<T>)elements).CopyTo(array, arrayIndex);
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex), "Index can't be less than 0");
             }
-            catch
+
+            if (array.Length - arrayIndex >= Count)
             {
-                throw new ArgumentException("Cannot copy elements in a smaller array");
+                return;
             }
+
+            throw new ArgumentException("The number of elements in List is greater than the available space from" + nameof(arrayIndex) + "to the end of the destination array");
         }
 
         public void RemoveAllElementsWithGivenValue(T value)
