@@ -12,7 +12,7 @@ namespace ArrayOperations
 
         public ReadOnlyCollection(ListT<T> list)
         {
-            readonlyList = list;
+            this.readonlyList = list;
         }
 
         public int Count { get; set; }
