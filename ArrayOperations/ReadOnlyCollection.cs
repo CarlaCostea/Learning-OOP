@@ -8,11 +8,11 @@ namespace ArrayOperations
     public class ReadOnlyCollection<T> : IList<T>
     {
         const string IsReadOnlyError = "List is ReadOnly";
-        private readonly ListT<T> readonlyList;
+        private ListT<T> readonlyList;
 
-        public ReadOnlyCollection(ListT<T> list)
+        public ReadOnlyCollection(ListT<T> readonlyList)
         {
-            this.readonlyList = list;
+            this.readonlyList = readonlyList;
         }
 
         public int Count { get; set; }

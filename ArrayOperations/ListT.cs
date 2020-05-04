@@ -152,6 +152,12 @@ namespace ArrayOperations
 
             if (array.Length - arrayIndex >= Count)
             {
+                for (int i = 0; i < Count; i++)
+                {
+                    array[arrayIndex] = this[i];
+                    arrayIndex++;
+                }
+
                 return;
             }
 
