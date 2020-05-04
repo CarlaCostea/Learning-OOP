@@ -94,7 +94,7 @@ namespace ArrayOperationsTests
         public void SetElementsOnAReadOnlyListShouldTrowAnError()
         {
             var stringArray = new ListT<string>() { "red", "red", "blue", "black" };
-            ReadOnlyCollection<string> readOnlyStringArray = new ReadOnlyCollection<string>(stringArray);
+            ReadOnlyCollection<string> readOnlyStringArray = new ReadOnlyCollection<string> { "red", "red", "blue", "black" };
             Assert.Throws<NotSupportedException>(() => readOnlyStringArray[0] = "white");
         }
 
@@ -120,7 +120,7 @@ namespace ArrayOperationsTests
         public void RemoveAllElementsWithGivenValueIfListIsReadonly()
         {
             var stringArray = new ListT<string>() { "red", "red", "red" };
-            ReadOnlyCollection<string> readOnlyStringArray = new ReadOnlyCollection<string>(stringArray);
+            ReadOnlyCollection<string> readOnlyStringArray = new ReadOnlyCollection<string> { "red", "red", "red" };
             var readonlyString = readOnlyStringArray.Clone();
             Assert.Equal(3, readonlyString.Count);
             Assert.Throws<NotSupportedException>(() => readonlyString.RemoveAllElementsWithGivenValue("red"));

@@ -6,21 +6,18 @@ namespace ArrayOperations
 {
     public class ReadOnlyCollection<T> : ListT<T>
     {
-        private ListT<T> readonlyElements;
-
-        public ReadOnlyCollection(ListT<T> elements)
+        public ReadOnlyCollection()
         {
-            readonlyElements = elements;
         }
 
         public IList<T> ReadOnlyList
         {
-            get => readonlyElements;
+            get => this;
         }
 
         public ReadOnlyCollection<T> Clone()
         {
-            return new ReadOnlyCollection<T>(readonlyElements);
+            return new ReadOnlyCollection<T>();
         }
     }
 }
