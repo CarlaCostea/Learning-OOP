@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace ArrayOperations
 {
     public class ListT<T> : IList<T>
-        where T : IComparable<T>
     {
         private T[] elements;
 
@@ -155,7 +154,7 @@ namespace ArrayOperations
             int i = 0;
             while (i < Count)
             {
-                if (value.CompareTo(elements[i]) == 0)
+                if (object.Equals(elements[i], value))
                 {
                     RemoveAt(i);
                 }
