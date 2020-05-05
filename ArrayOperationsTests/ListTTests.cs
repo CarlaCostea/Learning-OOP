@@ -99,39 +99,23 @@ namespace ArrayOperationsTests
         }
 
         [Fact]
-        public void RemoveAllElementsWithGivenValueIfListIsNotReadonly()
+        public void RemoveAllElementsWithGivenValue()
         {
             var stringArray = new ListT<string>() { "red", "red", "blue", "black", "blue", "red" };
             Assert.Equal(6, stringArray.Count);
             stringArray.RemoveAllElementsWithGivenValue("red");
+            Assert.Equal(3, stringArray.Count);
             Assert.True(stringArray.IndexOf("red") == -1);
         }
 
         [Fact]
-        public void RemoveAllElementsWithGivenValueIfListIsNotReadonlySecondExample()
+        public void RemoveAllElementsWithGivenValueSecondExample()
         {
             var stringArray = new ListT<string>() { "red", "red", "red" };
             Assert.Equal(3, stringArray.Count);
             stringArray.RemoveAllElementsWithGivenValue("red");
             Assert.True(stringArray.IndexOf("red") == -1);
-        }
-
-        [Fact]
-        public void RemoveAllElementsWithGivenValueIfListIsReadonly()
-        {
-            var stringArray = new ListT<string>() { "red", "red", "red" };
-            ReadOnlyCollection<string> readOnlyStringArray = new ReadOnlyCollection<string>(stringArray);
-            Assert.Equal(3, readOnlyStringArray.Count);
-            Assert.Throws<NotSupportedException>(() => readOnlyStringArray.RemoveAllElementsWithGivenValue("red"));
-            Assert.False(readOnlyStringArray.IndexOf("red") == -1);
-        }
-
-        [Fact]
-        public void CountElementsInReadonlyList()
-        {
-            var stringArray = new ListT<string>() { "red", "red", "red" };
-            ReadOnlyCollection<string> readOnlyStringArray = new ReadOnlyCollection<string>(stringArray);
-            Assert.Equal(3, readOnlyStringArray.Count);
+            Assert.Empty(stringArray);
         }
     }
 }
