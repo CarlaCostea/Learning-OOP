@@ -89,22 +89,7 @@ namespace ArrayOperations
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            if (array == null)
-            {
-                throw new ArgumentException("Array Cannot be null");
-            }
-
-            if (arrayIndex < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(arrayIndex), "Index can't be less than 0");
-            }
-
-            if (array.Length - arrayIndex >= Count)
-            {
-                return;
-            }
-
-            throw new ArgumentException("The number of elements in List is greater than the available space from" + nameof(arrayIndex) + "to the end of the destination array");
+            readonlyList.CopyTo(array, arrayIndex);
         }
 
         public void RemoveAllElementsWithGivenValue(T value)
