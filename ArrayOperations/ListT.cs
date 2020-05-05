@@ -6,7 +6,6 @@ namespace ArrayOperations
 {
     public class ListT<T> : IList<T>
     {
-        const string IsReadOnlyError = "List is ReadOnly";
         private T[] elements;
 
         public ListT()
@@ -15,21 +14,16 @@ namespace ArrayOperations
             elements = new T[initialSize];
         }
 
-        public int Count { get; set; }
+        public int Count { get; private set; }
 
-        public bool IsReadOnly { get; }
+        public bool IsReadOnly => false;
 
         public virtual T this[int index]
         {
             get => elements[index];
             set
             {
-                if (IsReadOnly)
-                {
-                    throw new NotSupportedException(IsReadOnlyError);
-                }
-
-                if (index < 0 && index >= Count)
+                if (index < 0 && index > Count)
                 {
                     throw new ArgumentOutOfRangeException(nameof(index), "Index should be inside the array boundaries");
                 }
@@ -48,11 +42,6 @@ namespace ArrayOperations
 
         public virtual void Add(T item)
         {
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException(IsReadOnlyError);
-            }
-
             VerifyNumberOfElements();
             elements[Count] = item;
             Count++;
@@ -97,22 +86,12 @@ namespace ArrayOperations
 
         public void Clear()
         {
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException(IsReadOnlyError);
-            }
-
             Array.Resize(ref elements, 0);
             Count = 0;
         }
 
         public bool Remove(T item)
             {
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException(IsReadOnlyError);
-            }
-
             if (IndexOf(item) == -1)
             {
                 return false;
@@ -124,18 +103,13 @@ namespace ArrayOperations
 
         public void RemoveAt(int index)
         {
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException(IsReadOnlyError);
-            }
-
-            if (index < 0 && index >= Count)
+           if (index < 0 && index >= Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(index), "Index should be inside the array boundaries");
             }
 
-            ShiftLeft(index);
-            Count--;
+           ShiftLeft(index);
+           Count--;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -166,11 +140,6 @@ namespace ArrayOperations
 
         public void RemoveAllElementsWithGivenValue(T value)
         {
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException();
-            }
-
             int i = 0;
             while (i < Count)
             {

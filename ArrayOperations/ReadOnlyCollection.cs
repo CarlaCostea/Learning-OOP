@@ -33,36 +33,25 @@ namespace ArrayOperations
 
         public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < Count; i++)
-            {
-                yield return readonlyList[i];
-            }
+            return readonlyList.GetEnumerator();
         }
 
-        public virtual void Add(T item)
+        public void Add(T item)
         {
             throw new NotSupportedException(IsReadOnlyError);
         }
 
         public bool Contains(T item)
         {
-            return IndexOf(item) != -1;
+            return readonlyList.Contains(item);
         }
 
         public int IndexOf(T item)
         {
-            for (int i = 0; i < Count; i++)
-            {
-                if (object.Equals(readonlyList[i], item))
-                {
-                    return i;
-                }
-            }
-
-            return -1;
+            return readonlyList.IndexOf(item);
         }
 
-        public virtual void Insert(int index, T item)
+        public void Insert(int index, T item)
         {
             throw new NotSupportedException(IsReadOnlyError);
         }
