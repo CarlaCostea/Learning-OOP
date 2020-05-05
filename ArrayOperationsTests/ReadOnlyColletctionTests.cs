@@ -50,7 +50,7 @@ namespace ArrayOperationsTests
 
         [Fact]
 
-        public void TryingToClearTheReadonlyListShoulTrowAnError()
+        public void TryingToClearTheReadonlyListShouldTrowAnError()
         {
             var list = new ListT<int> { 0, 1, 2, 3 };
             ReadOnlyCollection<int> readOnlyList = new ReadOnlyCollection<int>(list);
@@ -58,6 +58,18 @@ namespace ArrayOperationsTests
             Assert.Throws<NotSupportedException>(() => readOnlyList.Clear());
             Assert.False(readOnlyList.Count == 0);
             Assert.Equal(new[] { 0, 1, 2, 3 }, readOnlyList);
+        }
+
+        [Fact]
+
+        public void CopyElementsInNewListShouldBeAvailable()
+        {
+            var list = new ListT<int> { 0, 1, 2, 3 };
+            ReadOnlyCollection<int> readOnlyList = new ReadOnlyCollection<int>(list);
+            Assert.Equal(new[] { 0, 1, 2, 3 }, readOnlyList);
+            int[] listClone = new int[readOnlyList.Count];
+            readOnlyList.CopyTo(listClone, 0);
+            Assert.Equal(new[] { 0, 1, 2, 3 }, listClone);
         }
 
         [Fact]
