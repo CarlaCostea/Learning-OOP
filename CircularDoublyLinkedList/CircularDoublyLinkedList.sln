@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircularDoublyLinkedList", "CircularDoublyLinkedList.csproj", "{20137822-7ECA-4D25-B87A-C9ED3AC90463}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircularDoublyLinkedListTest", "..\CircularDoublyLinkedListTest\CircularDoublyLinkedListTest.csproj", "{2E0F87D5-A4F7-4DF5-A3E9-1278684FEDAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20137822-7ECA-4D25-B87A-C9ED3AC90463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20137822-7ECA-4D25-B87A-C9ED3AC90463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20137822-7ECA-4D25-B87A-C9ED3AC90463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20137822-7ECA-4D25-B87A-C9ED3AC90463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E0F87D5-A4F7-4DF5-A3E9-1278684FEDAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E0F87D5-A4F7-4DF5-A3E9-1278684FEDAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E0F87D5-A4F7-4DF5-A3E9-1278684FEDAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E0F87D5-A4F7-4DF5-A3E9-1278684FEDAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E3EDE01-AB96-455F-AB4D-A7BA181CB8F3}
+	EndGlobalSection
+EndGlobal
