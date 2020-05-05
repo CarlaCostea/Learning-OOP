@@ -72,6 +72,19 @@ namespace ArrayOperationsTests
             Assert.Equal(new[] { 0, 1, 2, 3 }, listClone);
         }
 
+
+        [Fact]
+        public void AddingElementsInListShouldAddThemInReadOnlyList()
+        {
+            var stringArray = new ListT<string>() { "red", "red", "red" };
+            ReadOnlyCollection<string> readOnlyStringArray = new ReadOnlyCollection<string>(stringArray);
+            Assert.Equal(3, readOnlyStringArray.Count);
+            Assert.Equal(new[] { "red", "red", "red" }, readOnlyStringArray);
+            stringArray.Add("black");
+            Assert.Equal(new[] { "red", "red", "red", "black" }, readOnlyStringArray);
+            Assert.Equal(4, readOnlyStringArray.Count);
+        }
+
         [Fact]
         public void RemoveAllElementsWithGivenValueIfListIsReadonly()
         {
