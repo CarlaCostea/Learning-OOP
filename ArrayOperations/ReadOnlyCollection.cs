@@ -8,18 +8,21 @@ namespace ArrayOperations
     public class ReadOnlyCollection<T> : IList<T>
     {
         const string IsReadOnlyError = "List is ReadOnly";
-        private ListT<T> readonlyList;
+        private readonly IList<T> readonlyList;
 
-        public ReadOnlyCollection(ListT<T> readonlyList)
+        public ReadOnlyCollection(IList<T> list)
         {
-            this.readonlyList = readonlyList;
+            this.readonlyList = list;
         }
 
-        public int Count { get; set; }
+        public int Count
+        {
+            get => readonlyList.Count;
+        }
 
-        public bool IsReadOnly { get; }
+        public bool IsReadOnly => true;
 
-        public virtual T this[int index]
+        public T this[int index]
         {
             get => readonlyList[index];
             set
