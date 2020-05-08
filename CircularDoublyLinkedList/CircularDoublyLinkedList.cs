@@ -32,12 +32,11 @@ namespace CircularDoublyLinkedList
 
         bool ICollection<T>.IsReadOnly => false;
 
-        public void ICollection<T>.Add(T item)
+        public void Add(T item)
         {
             Count++;
             if (Count == 0)
             {
-                //make head and tail
                 Head = new Node<T>(item);
                 Tail = Head;
                 Head.Previous = Head;
@@ -219,28 +218,30 @@ namespace CircularDoublyLinkedList
             return Head == null;
         }
 
+        public void Clear()
+        {
+            while (!IsEmpty())
+            {
+                RemoveFromEnd();
+            }
+        }
 
-        void ICollection<T>.Clear()
+        public bool Contains(T item)
         {
             throw new NotImplementedException();
         }
 
-        bool ICollection<T>.Contains(T item)
+        public void CopyTo(T[] array, int arrayIndex)
         {
             throw new NotImplementedException();
         }
 
-        void ICollection<T>.CopyTo(T[] array, int arrayIndex)
+        public bool Remove(T item)
         {
             throw new NotImplementedException();
         }
 
-        bool ICollection<T>.Remove(T item)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             throw new NotImplementedException();
         }
