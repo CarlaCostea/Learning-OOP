@@ -13,10 +13,10 @@ namespace CircularDoublyLinkedListTest
         public void AddNewDataInFrontOfTheList()
         {
             DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
-            doublyLinkedList.InsertFront(9);
-            doublyLinkedList.InsertFront(8);
+            doublyLinkedList.InsertFront(doublyLinkedList, 9);
+            doublyLinkedList.InsertFront(doublyLinkedList, 8);
             DoublyLinkedList secondDoublyLinkedList = new DoublyLinkedList();
-            secondDoublyLinkedList.InsertFront(8);
+            secondDoublyLinkedList.InsertFront(secondDoublyLinkedList, 8);
             Assert.Equal(secondDoublyLinkedList.Head, doublyLinkedList.Head);
         }
     }

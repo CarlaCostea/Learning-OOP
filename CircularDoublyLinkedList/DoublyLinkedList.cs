@@ -8,19 +8,17 @@ namespace CircularDoublyLinkedList
     {
         public DoublyNode Head;
 
-        public DoublyLinkedList DoubleLinkedList;
-
-        public void InsertFront(int newData)
+        public void InsertFront(DoublyLinkedList doublyLinkedList, int newData)
         {
             DoublyNode newNode = new DoublyNode(newData);
-            newNode.Next = DoubleLinkedList.Head.Previous;
+            newNode.Next = doublyLinkedList.Head.Previous;
             newNode.Previous = null;
-            if (DoubleLinkedList.Head != null)
+            if (doublyLinkedList.Head != null)
             {
-                DoubleLinkedList.Head.Previous = newNode.Next;
+                doublyLinkedList.Head.Previous = newNode.Next;
             }
 
-            DoubleLinkedList.Head = newNode;
+            doublyLinkedList.Head = newNode;
         }
     }
 }

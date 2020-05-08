@@ -4,17 +4,25 @@ using System.Text;
 
 namespace CircularDoublyLinkedList
 {
-    public class Node
+    public class Node<T>
     {
-
-        public Node(int data)
+        public Node()
         {
-            this.Data = data;
-            this.Next = null;
+            Next = null;
+            Previous = null;
         }
 
-        public int Data { get; set; }
+        public Node(T value)
+        {
+            Value = value;
+            Next = null;
+            Previous = null;
+        }
 
-        public Node Next { get; set; }
+        public Node<T> Next { get; set; }
+
+        public Node<T> Previous { get; set; }
+
+        public T Value { get; set; }
     }
 }

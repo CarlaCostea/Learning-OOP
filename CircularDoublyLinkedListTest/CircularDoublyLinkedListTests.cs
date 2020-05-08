@@ -5,7 +5,7 @@ using Xunit;
 
 namespace CircularDoublyLinkedListTest
 {
-    public class SinglyLinkedListTests
+    public class CircularDoublyLinkedListTests
     {
         [Fact]
         public void Test()

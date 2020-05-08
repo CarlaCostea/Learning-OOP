@@ -28,8 +28,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CircularDoublyLinkedListTest\CircularDoublyLinkedListTest.csproj" />
-  </ItemGroup>
-
 </Project>
