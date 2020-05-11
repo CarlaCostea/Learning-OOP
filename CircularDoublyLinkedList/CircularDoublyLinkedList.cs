@@ -15,7 +15,7 @@ namespace CircularDoublyLinkedList
             sentry.Connect(sentry, sentry);
         }
 
-        public int Count { get; }
+        public int Count { get; private set; }
 
         public bool IsReadOnly => false;
 
@@ -223,10 +223,7 @@ namespace CircularDoublyLinkedList
 
         public void Clear()
         {
-            while (!IsEmpty())
-            {
-                RemoveFromEnd();
-            }
+            Count = 0;
         }
 
         public bool Contains(T item)
