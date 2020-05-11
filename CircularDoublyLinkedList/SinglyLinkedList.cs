@@ -6,13 +6,32 @@ namespace CircularDoublyLinkedList
 {
     public class SinglyLinkedList
     {
-        public NodeSingly Head;
+        int count;
+        NodeSingly head;
+        NodeSingly tail;
 
-        public void InsertFront(SinglyLinkedList singlyList, int newData)
+        public SinglyLinkedList()
+        {
+            this.head = null;
+            this.tail = null;
+            this.count = 0;
+        }
+
+        public void InsertFront(int newData)
         {
             NodeSingly newNode = new NodeSingly(newData);
-            newNode.Next = singlyList.Head;
-            singlyList.Head = newNode;
+            if (this.head == null)
+            {
+                this.head = newNode;
+                this.tail = newNode;
+            }
+            else
+            {
+                newNode.Next = this.head;
+                this.head = newNode;
+            }
+
+            count++;
         }
     }
 }
