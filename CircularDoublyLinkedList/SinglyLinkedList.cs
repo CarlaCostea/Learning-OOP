@@ -17,6 +17,8 @@ namespace CircularDoublyLinkedList
             this.count = 0;
         }
 
+        public int Count => count;
+
         public void InsertFront(int newData)
         {
             NodeSingly newNode = new NodeSingly(newData);

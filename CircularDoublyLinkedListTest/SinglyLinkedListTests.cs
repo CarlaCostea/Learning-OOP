@@ -17,8 +17,6 @@ namespace CircularDoublyLinkedListTest
             intList.InsertFront(1);
             intList.InsertFront(0);
             Assert.Equal(4, intList.Count);
-
-
         }
     }
 }

@@ -18,13 +18,23 @@ namespace CircularDoublyLinkedList
 
         public Node<T> Previous { get; set; }
 
-        public T Value { get; set; }
+        public T Data { get; set; }
 
-        public void Connect(T value)
-        {
-            Value = value;
-            Next = null;
-            Previous = null;
+        public CircularDoublyLinkedList<T> List { get; set; }
+
+        public void Connect(Node<T> previous = null, Node<T> next = null)
+            {
+            if (previous != null)
+            {
+                Previous = previous;
+            }
+
+            if (next == null)
+            {
+                return;
+            }
+
+            Next = next;
         }
     }
 }

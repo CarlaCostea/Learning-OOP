@@ -15,8 +15,8 @@ namespace CircularDoublyLinkedList
 
         public int Data { get; set; }
 
-        public Node Next { get; set; }
+        public DoublyNode Next { get; set; }
 
-        public Node Previous { get; set; }
+        public DoublyNode Previous { get; set; }
     }
 }
