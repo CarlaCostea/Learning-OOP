@@ -6,30 +6,34 @@ namespace CircularDoublyLinkedList
 {
     public class CircularDoublyLinkedList<T> : ICollection<T>
     {
-        public Node<T> Head;
-        public Node<T> Tail;
-        public int Count;
+        private readonly Node<T> sentry;
 
         public CircularDoublyLinkedList()
         {
-            Head = null;
-            Tail = null;
             Count = 0;
+            sentry = new Node<T>(default) { List = this };
+            sentry.Connect(sentry, sentry);
         }
 
-        public CircularDoublyLinkedList(T value)
+        public int Count { get; }
+
+        public bool IsReadOnly => false;
+
+        public Node<T> Head
         {
-            Head = new Node<T>(value);
-            Tail = new Node<T>(value);
-            Head.Previous = Head;
-            Head.Next = Head;
-            Tail = Head;
-            Count = 1;
+            get
+            {
+                return Count == 0 ? null : sentry.Next;
+            }
         }
 
-        int ICollection<T>.Count => Count;
-
-        bool ICollection<T>.IsReadOnly => false;
+        public Node<T> Tail
+        {
+            get
+            {
+                return Count == 0 ? null : sentry.Previous;
+            }
+        }
 
         public void Add(T item)
         {
@@ -232,7 +236,12 @@ namespace CircularDoublyLinkedList
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            var enumerator = GetEnumerator();
+            for (int i = arrayIndex; i < Count + arrayIndex; i++)
+            {
+                enumerator.MoveNext();
+                array[i] = enumerator.Current;
+            }
         }
 
         public bool Remove(T item)
@@ -242,12 +251,15 @@ namespace CircularDoublyLinkedList
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (Node<T> i = sentry.Next; i != sentry; i = i.Next)
+            {
+                yield return i.Data;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }
