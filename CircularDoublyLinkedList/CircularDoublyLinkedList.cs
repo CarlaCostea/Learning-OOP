@@ -66,7 +66,13 @@ namespace CircularDoublyLinkedList
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            return Find(item) != null;
+        }
+
+        public Node<T> Find(T element)
+        {
+            var enumerable = GetNodesFromStart();
+            return SearchCircularDoublyLinkedList(element, enumerable);
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -95,6 +101,39 @@ namespace CircularDoublyLinkedList
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        private bool RemoveItem(Node<T> node)
+        {
+            if (node == null)
+            {
+                return false;
+            }
+
+            node.Previous.Next = node.Next;
+            node.Next.Previous = node.Previous;
+            node.Connect();
+            Count--;
+            return true;
+        }
+
+        private Node<T> SearchCircularDoublyLinkedList(T element, IEnumerable<Node<T>> nodeToFind)
+        {
+            foreach (var node in nodeToFind)
+            {
+                if (CheckForNull(node, element)
+                    || node.Data?.Equals(element) == true)
+                {
+                    return node;
+                }
+            }
+
+            return null;
+        }
+
+        private bool CheckForNull(Node<T> node, T value)
+        {
+            return node.Data == null && value == null;
         }
 
         private IEnumerable<Node<T>> GetNodesFromStart()
