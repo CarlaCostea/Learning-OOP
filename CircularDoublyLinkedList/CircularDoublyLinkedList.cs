@@ -37,183 +37,21 @@ namespace CircularDoublyLinkedList
 
         public void Add(T item)
         {
-            Count++;
-            if (Count == 0)
-            {
-                Head = new Node<T>(item);
-                Tail = Head;
-                Head.Previous = Head;
-                Head.Next = Head;
-                Tail = Head;
-            }
-            else
-            {
-                Node<T> newNode = new Node<T>(item);
-
-                newNode.Next = Head;
-                newNode.Previous = Tail;
-
-                Head.Previous = newNode;
-                Tail.Next = newNode;
-                Tail = Tail.Next;
-            }
+            AddInFront(sentry, new Node<T>(item));
         }
 
-        public void AddToFront(T value)
+        public void AddInFront(Node<T> listNode, Node<T> newListNode)
         {
-            if (Count == 0)
-            {
-                Head = new Node<T>(value);
-                Tail = Head;
-                Head.Previous = Head;
-                Head.Next = Head;
-                Tail = Head;
-            }
-            else
-            {
-                Node<T> newNode = new Node<T>(value);
-                newNode.Next = Head;
-                newNode.Previous = Tail;
-
-                Head.Previous = newNode;
-                Tail.Next = newNode;
-                Head = Head.Previous;
-            }
-
+            listNode.Previous.Next = newListNode;
+            newListNode.Connect(previous: listNode.Previous, next: listNode);
+            listNode.Previous = newListNode;
+            newListNode.List = this;
             Count++;
         }
 
-        public bool AddAt(int position, T value)
+        public void AddInFront(Node<T> listNode, T item)
         {
-            if (Count < position)
-            {
-                return false;
-            }
-            else if (position == 0)
-            {
-                AddToFront(value);
-                return true;
-            }
-            else if (position == Count)
-            {
-                Add(value);
-                return true;
-            }
-            else
-            {
-                Node<T> prev = Head;
-                Node<T> next;
-                for (int i = 0; i < position - 1; i++)
-                {
-                    prev = prev.Next;
-                }
-
-                var newNode = new Node<T>(value);
-                if (prev == Head)
-                {
-                    Head = newNode;
-                }
-
-                if (prev == Tail)
-                {
-                    Tail = newNode;
-                }
-
-                next = prev.Next;
-                prev.Next = newNode;
-                next.Previous = newNode;
-                newNode.Previous = prev;
-                newNode.Next = next;
-
-                Count++;
-                return true;
-            }
-        }
-
-        public bool RemoveFromFront()
-        {
-            if (IsEmpty())
-            {
-                return false;
-            }
-            else if (Count == 1)
-            {
-                Head = null;
-                Count--;
-                Tail = Head;
-                return true;
-            }
-            else
-            {
-                Head = Head.Next;
-                Head.Previous = Tail;
-                Tail.Next = Head;
-                Count--;
-                return true;
-            }
-        }
-
-        public bool RemoveFromEnd()
-        {
-            if (IsEmpty())
-            {
-                return false;
-            }
-            else if (Count == 1)
-            {
-                RemoveFromFront();
-                return true;
-            }
-            else
-            {
-                Tail = Tail.Previous;
-                Tail.Next = Head;
-                Head.Previous = Tail;
-                Count--;
-                return true;
-            }
-        }
-
-        public bool RemoveAt(int position)
-        {
-            if (Count - 1 < position)
-            {
-                return false;
-            }
-            else if (position == 0)
-            {
-                RemoveFromFront();
-                return true;
-            }
-            else if (position == Count - 1)
-            {
-                RemoveFromEnd();
-                return true;
-            }
-            else
-            {
-                var current = Head;
-                for (int i = 0; i < position - 1; i++)
-                {
-                    current = current.Next;
-                }
-
-                if (current.Next == Head)
-                {
-                    Head = current.Next.Next;
-                }
-
-                if (current.Next == Tail)
-                {
-                    Tail = current;
-                }
-
-                current.Next = current.Next.Next;
-                current.Next.Previous = current;
-
-                Count--;
-                return true;
-            }
+            AddInFront(listNode, new Node<T>(item));
         }
 
         public bool IsEmpty()
@@ -257,6 +95,22 @@ namespace CircularDoublyLinkedList
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        private IEnumerable<Node<T>> GetNodesFromStart()
+        {
+            for (Node<T> i = sentry.Next; i != sentry; i = i.Next)
+            {
+                yield return i;
+            }
+        }
+
+        private IEnumerable<Node<T>> GetNodesFromEnd()
+        {
+            for (Node<T> i = sentry.Previous; i != sentry; i = i.Previous)
+            {
+                yield return i;
+            }
         }
     }
 }
