@@ -54,6 +54,17 @@ namespace CircularDoublyLinkedList
             AddInFront(listNode, new Node<T>(item));
         }
 
+        public void AddAfter(Node<T> listNode, Node<T> newListNode)
+        {
+            AddInFront(listNode.Next, newListNode);
+        }
+
+        public void AddAfter(Node<T> listNode, T item)
+        {
+            Node<T> newNode = new Node<T>(item);
+            AddInFront(listNode.Next, newNode);
+        }
+
         public bool IsEmpty()
         {
             return Head == null;
@@ -72,7 +83,13 @@ namespace CircularDoublyLinkedList
         public Node<T> Find(T element)
         {
             var enumerable = GetNodesFromStart();
-            return SearchCircularDoublyLinkedList(element, enumerable);
+            return SearchNode(element, enumerable);
+        }
+
+        public Node<T> FindLast(T element)
+        {
+            var enumerable = GetNodesFromEnd();
+            return SearchNode(element, enumerable);
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -87,7 +104,21 @@ namespace CircularDoublyLinkedList
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            return RemoveAt(Find(item));
+        }
+
+        public bool RemoveAt(Node<T> node)
+        {
+            if (node == null)
+            {
+                return false;
+            }
+
+            node.Previous.Next = node.Next;
+            node.Next.Previous = node.Previous;
+            node.Connect();
+            Count--;
+            return true;
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -103,21 +134,7 @@ namespace CircularDoublyLinkedList
             return GetEnumerator();
         }
 
-        private bool RemoveItem(Node<T> node)
-        {
-            if (node == null)
-            {
-                return false;
-            }
-
-            node.Previous.Next = node.Next;
-            node.Next.Previous = node.Previous;
-            node.Connect();
-            Count--;
-            return true;
-        }
-
-        private Node<T> SearchCircularDoublyLinkedList(T element, IEnumerable<Node<T>> nodeToFind)
+        private Node<T> SearchNode(T element, IEnumerable<Node<T>> nodeToFind)
         {
             foreach (var node in nodeToFind)
             {

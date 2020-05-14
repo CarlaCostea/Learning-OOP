@@ -78,5 +78,40 @@ namespace CircularDoublyLinkedListTest
             Assert.Equal(2, array[1]);
             Assert.Equal(3, array[2]);
         }
+
+        [Fact]
+        public void RemoveShouldReturnTrueIfElementIsRemovedFromList()
+        {
+            var circularDoublyLinkedList = new CircularDoublyLinkedList<int>();
+            circularDoublyLinkedList.Add(10);
+            circularDoublyLinkedList.Add(5);
+            circularDoublyLinkedList.Add(3);
+            Assert.True(circularDoublyLinkedList.Remove(3));
+            Assert.DoesNotContain(3, circularDoublyLinkedList);
+        }
+
+        [Fact]
+        public void RemoveShouldDeleteOnlyFirstAppearanceOfElement()
+        {
+            var circularDoublyLinkedList = new CircularDoublyLinkedList<int>();
+            circularDoublyLinkedList.Add(10);
+            circularDoublyLinkedList.Add(5);
+            circularDoublyLinkedList.Add(3);
+            circularDoublyLinkedList.Add(3);
+            circularDoublyLinkedList.Remove(3);
+            Assert.Contains(3, circularDoublyLinkedList);
+            circularDoublyLinkedList.Remove(3);
+            Assert.DoesNotContain(3, circularDoublyLinkedList);
+        }
+
+        [Fact]
+        public void RemoveShouldReturnFalseIfListDoesNotContainElement()
+        {
+            var circularDoublyLinkedList = new CircularDoublyLinkedList<int>();
+            circularDoublyLinkedList.Add(10);
+            circularDoublyLinkedList.Add(5);
+            circularDoublyLinkedList.Add(3);
+            Assert.False(circularDoublyLinkedList.Remove(7));
+        }
     }
 }
