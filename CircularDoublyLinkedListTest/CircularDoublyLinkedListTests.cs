@@ -29,6 +29,19 @@ namespace CircularDoublyLinkedListTest
         }
 
         [Fact]
+        public void TryingToAddAnElementInFrontOfANullNodeShouldTrowAnException()
+        {
+            var circularDoublyLinkedList = new CircularDoublyLinkedList<int>();
+            circularDoublyLinkedList.Add(10);
+            circularDoublyLinkedList.Add(5);
+            circularDoublyLinkedList.Add(3);
+
+            var node = new Node<int>(default);
+
+            Assert.Throws<ArgumentNullException>(() => circularDoublyLinkedList.AddInFront(null, 10));
+        }
+
+        [Fact]
         public void ContainShouldReturnTrueIfElementIsInList()
         {
             var circularDoublyLinkedList = new CircularDoublyLinkedList<int>();
@@ -80,6 +93,14 @@ namespace CircularDoublyLinkedListTest
         }
 
         [Fact]
+        public void CopyElementsInSmallerDimensionArrayShouldTrowAnError()
+        {
+            var circularDoublyLinkedList = new CircularDoublyLinkedList<int> { 1, 2, 3 };
+            var array = new int[circularDoublyLinkedList.Count - 1];
+            Assert.Throws<ArgumentException>(() => circularDoublyLinkedList.CopyTo(array, 0));
+        }
+
+        [Fact]
         public void RemoveShouldReturnTrueIfElementIsRemovedFromList()
         {
             var circularDoublyLinkedList = new CircularDoublyLinkedList<int>();
@@ -105,13 +126,13 @@ namespace CircularDoublyLinkedListTest
         }
 
         [Fact]
-        public void RemoveShouldReturnFalseIfListDoesNotContainElement()
+        public void RemoveShouldThrowAnErrorIfListDoesNotContainElementOrNode()
         {
             var circularDoublyLinkedList = new CircularDoublyLinkedList<int>();
             circularDoublyLinkedList.Add(10);
             circularDoublyLinkedList.Add(5);
             circularDoublyLinkedList.Add(3);
-            Assert.False(circularDoublyLinkedList.Remove(7));
+            Assert.Throws<ArgumentNullException>(() => circularDoublyLinkedList.Remove(7));
         }
     }
 }

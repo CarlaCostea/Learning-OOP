@@ -42,6 +42,31 @@ namespace CircularDoublyLinkedList
 
         public void AddInFront(Node<T> listNode, Node<T> newListNode)
         {
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("List is readonly!");
+            }
+
+            if (listNode == null)
+            {
+                throw new ArgumentNullException(nameof(listNode));
+            }
+
+            if (newListNode == null)
+            {
+                throw new ArgumentNullException(nameof(newListNode));
+            }
+
+            if (!ContainsNode(listNode))
+            {
+                throw new NotSupportedException("List does not contain given node!");
+            }
+
+            if (!ContainsNode(listNode) && (listNode.Next != null || listNode.Previous != null))
+            {
+                throw new InvalidOperationException("Node is already set");
+            }
+
             listNode.Previous.Next = newListNode;
             newListNode.Connect(previous: listNode.Previous, next: listNode);
             listNode.Previous = newListNode;
@@ -72,6 +97,11 @@ namespace CircularDoublyLinkedList
 
         public void Clear()
         {
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("List is readonly!");
+            }
+
             Count = 0;
         }
 
@@ -94,6 +124,21 @@ namespace CircularDoublyLinkedList
 
         public void CopyTo(T[] array, int arrayIndex)
         {
+            if (array == null)
+            {
+                throw new ArgumentNullException(nameof(array));
+            }
+
+            if (arrayIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex), message: "Invalid index");
+            }
+
+            if (array.Length - arrayIndex < Count)
+            {
+                throw new ArgumentException("The number of elements in List is greater than the available space from" + nameof(arrayIndex) + "to the end of the destination array");
+            }
+
             var enumerator = GetEnumerator();
             for (int i = arrayIndex; i < Count + arrayIndex; i++)
             {
@@ -111,7 +156,17 @@ namespace CircularDoublyLinkedList
         {
             if (node == null)
             {
-                return false;
+                throw new ArgumentNullException(nameof(node));
+            }
+
+            if (!ContainsNode(node))
+            {
+                throw new NotSupportedException("List does not contain given node!");
+            }
+
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("List is readonly!");
             }
 
             node.Previous.Next = node.Next;
@@ -151,6 +206,11 @@ namespace CircularDoublyLinkedList
         private bool CheckForNull(Node<T> node, T value)
         {
             return node.Data == null && value == null;
+        }
+
+        private bool ContainsNode(Node<T> listNode)
+        {
+            return listNode.List == this;
         }
 
         private IEnumerable<Node<T>> GetNodesFromStart()
